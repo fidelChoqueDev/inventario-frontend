@@ -1,30 +1,59 @@
-# React + TypeScript + Vite
+![Nombre del proyecto con un fondo de cajas](./src/assets/Zaiko.png)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Índice
 
-Currently, two official plugins are available:
+- [Índice](#índice)
+- [Sobre el proyecto](#sobre-el-proyecto)
+- [Características principales](#características-principales)
+- [Tecnologías utilizadas](#tecnologías-utilizadas)
+- [Instalación y uso](#instalación-y-uso)
+- [Contribución](#contribución)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Sobre el proyecto
 
-## Expanding the ESLint configuration
+Zakio es una herramienta integral diseñada para ayudar a las empresas a manejar sus inventarios de manera eficiente y efectiva. Esta aplicación permite a los usuarios realizar un seguimiento de sus productos. Ideal para pequeñas y medianas empresas, la aplicación ofrece una interfaz intuitiva y funcionalidades robustas que facilitan el control y la optimización del inventario.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Características principales
 
-- Configure the top-level `parserOptions` property like this:
+- Gestión de productos: Permite añadir, editar y eliminar productos del inventario.
+- Control de stock: Muestra un estado cuando un producto se esta quedando sin stock.
+- Categorías y etiquetas: Organiza los productos por categarías y etiquetas.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json', './tsconfig.app.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## Tecnologías utilizadas
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- Backend: Python, FastAPI
+- Frontend: React, TypeScript
+- Base de Datos: PostgreSQL
+- Dependencias: husky, commit-lint, react-router
+
+## Instalación y uso
+
+Para clonar y ejecutar localmente ejecutar los siguientes pasos:
+
+  1. Clonar el repositorio
+  ```bash
+  git clone https://github.com/Deva-Coders/inventario-frontend.git
+  cd inventorio-frontend
+  ```
+
+  2. Instalar las dependencias
+   ```bash
+   pnpm run dev
+   ```
+  
+  3. Desplegar el proyecto localmente
+   ```bash
+   pnpm run dev
+   ```
+   4. Accede a la aplicación a través del puerto http://localhost:5173/
+
+## Contribución
+
+Las contribuciones son bienvenidas. Por favor, sigue estos pasos para contribuir:
+
+- Haz un fork del proyecto.
+- Crea una rama para tu nueva función (git checkout -b feature/nueva-funcion).
+- Haz commit de tus cambios (git commit -am 'Añadir nueva función').
+- Recuerda que usamos husky para asegurar el formateo del código y commit-lint para aseguar el uso de conventional commits.
+- Haz push a la rama (git push origin feature/nueva-funcion).
+- Crea un Pull Request.
