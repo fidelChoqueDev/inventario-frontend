@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import  HomePage  from "./pages/HomePage";
 import  LoginPage  from "./pages/LoginPage";
-import  CreateUserPage  from "./pages/CreateUserPage";
+import  RegisterUserPage  from "./pages/RegisterUserPage";
 import DashboardPage from './pages/DashboardPage';
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
@@ -16,7 +16,7 @@ const router = createBrowserRouter([
     element: <LoginPage/>
   },{
     path: '/create',
-    element: <CreateUserPage/>
+    element: <RegisterUserPage/>
   },
   {
     path: '/dashboard',
