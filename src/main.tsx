@@ -15,7 +15,7 @@ const router = createBrowserRouter([
   {path: '/login',
     element: <LoginPage/>
   },{
-    path: '/create',
+    path: '/register',
     element: <RegisterUserPage/>
   },
   {
