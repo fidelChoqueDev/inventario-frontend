@@ -13,6 +13,17 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+@font-face {
+  font-family: "BalsamiqSans";
+  src: local("BalsamiqSans-Regular"),
+    url("./assets/fonts/BalsamiqSans-Regular.ttf");
+}
+
+@font-face {
+  font-family: "BalsamiqSans-Bold";
+  src: local("BalsamiqSans-Bold"), url("./assets/fonts/BalsamiqSans-Bold.ttf");
+}
+
 a {
   font-weight: 500;
   color: #646cff;
