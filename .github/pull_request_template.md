@@ -1,22 +1,22 @@
-## Descripción
+## Description
 
-<!-- Descripción clara y concisa de los cambios incluidos en esta PR. -->
+<!-- A clear and concise description of the changes included in this PR. -->
 
-## Tipo de Cambio
+## Type of Change
 
-<!-- Marque con una "x" en las casillas que apliquen -->
+<!-- Mark with an "x" the ones that apply -->
 
-- [ ] Bug fix (corrección de un error)
-- [ ] Nueva característica (cambio que añade funcionalidad)
-- [ ] Mejora (mejora de una característica existente sin añadir nueva funcionalidad)
-- [ ] Refactorización (cambio de código que no afecta la funcionalidad)
-- [ ] Documentación (cambios o adiciones a la documentación)
-- [ ] Otro (por favor, especifique):
+- [ ] Bug fix (non-breaking change which fixes an issue)
+- [ ] New feature (non-breaking change which adds functionality)
+- [ ] Enhancement (improvement of an existing feature)
+- [ ] Refactor (code change that neither fixes a bug nor adds a feature)
+- [ ] Documentation (changes or additions to documentation)
+- [ ] Other (please specify):
 
-## Tarea de Trello
+## Related Issues
 
-<!-- Lista de issues relacionados o cerrados por esta PR, utilizando referencias como "Closes #123". -->
+<!-- Related to [Trello Card](https://trello.com/card) -->
 
-## Capturas de Pantalla
+## Screenshots
 
-<!-- Si aplica, incluye capturas de pantalla que muestren los cambios visuales. -->
+<!-- If applicable, include screenshots showing the visual changes. -->
