@@ -1,0 +1,17 @@
+div {
+    display: flex;
+    flex-direction: column;
+}
+
+div span {
+    color: crimson;
+    display: none;
+}
+
+input:invalid[focused="true"] {
+    border-color: crimson;
+}
+
+input:invalid[focused="true"] ~ span {
+    display: block
+}
