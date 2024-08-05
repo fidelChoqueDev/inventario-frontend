@@ -10,6 +10,17 @@
   --border-sm: 0.375rem;
 }
 
+@font-face {
+  font-family: "BalsamiqSans";
+  src: local("BalsamiqSans-Regular"),
+    url("./assets/fonts/BalsamiqSans-Regular.ttf");
+}
+
+@font-face {
+  font-family: "BalsamiqSans-Bold";
+  src: local("BalsamiqSans-Bold"), url("./assets/fonts/BalsamiqSans-Bold.ttf");
+}
+
 /* My minimal reset */
 html {
   box-sizing: border-box;
