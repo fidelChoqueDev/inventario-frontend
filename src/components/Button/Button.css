@@ -1,0 +1,15 @@
+.btn {
+  border-radius: 0.25rem;
+  text-transform: uppercase;
+}
+
+.btn-dark {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+.btn-light {
+  background-color: #ffffff;
+  border: 1px solid #1a1a1a;
+  color: #1a1a1a;
+}
