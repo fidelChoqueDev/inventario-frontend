@@ -1,7 +1,13 @@
 /* Custom variables */
 :root {
   --clr-primary: #1a1a1a;
+  --clr-black60: #00000060;
+  --clr-black50: #00000050;
   --clr-secondary: #ffffff;
+  --clr-accent: #A2562C;
+  --clr-error: #f17989;
+  --clr-error-border: #f09b9d;
+  --clr-success: #5a8b29;
   --clr-soft: #808080;
   --clr-text: var(--clr-primary);
   --clr-main-bg: var(--clr-secondary);
@@ -76,3 +82,12 @@ p {
     scroll-behavior: smooth;
   }
 }
+
+/* Main styles */
+body {
+  display: grid;
+  place-content: center;
+  padding: 1rem;
+  font-family: 'BalsamiqSans';
+}
+
