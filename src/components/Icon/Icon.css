@@ -1,3 +1,7 @@
 .svg-eye path {
   stroke: #ffffff;
 }
+
+.svg-arrow-left path {
+  fill: #a2562c;
+}
