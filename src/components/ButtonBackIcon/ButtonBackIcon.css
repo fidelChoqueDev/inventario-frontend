@@ -1,0 +1,28 @@
+.c-btn-back-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0.5rem;
+  background-color: #fcfaf8;
+  border-radius: 6px;
+  border: 2px solid #a2562c;
+}
+
+.c-btn-back-icon:hover {
+  background-color: #a2562c;
+}
+.c-btn-back-icon:active {
+  background-color: #000;
+  border-color: #000;
+}
+.c-btn-back-icon:active svg path {
+  fill: #fff;
+}
+.c-btn-back-icon:hover svg path {
+  fill: #fff;
+}
+.c-btn-back-icon svg {
+  width: 80%;
+}
