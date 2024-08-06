@@ -33,6 +33,7 @@ html {
 }
 
 body {
+  font-family: "BalsamiqSans";
   min-height: 100dvh;
   margin: 0;
   line-height: 1.5;
@@ -56,6 +57,14 @@ select {
   font: inherit;
 }
 
+input {
+  background-color: transparent;
+}
+
+input:focus {
+  outline: none;
+}
+
 h1,
 h2,
 h3,
@@ -76,3 +85,4 @@ p {
     scroll-behavior: smooth;
   }
 }
+
