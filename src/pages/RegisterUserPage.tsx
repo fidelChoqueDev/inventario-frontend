@@ -1,9 +1,11 @@
+import RegisterForm from "../components/RegisterForm/RegisterForm.tsx"
 
 const CreateUserPage = () => {
   return (
-    <div>
-      <h1>New user page</h1>
-    </div>
+    <main>
+      <img src="/clean-box.png" alt="Box" />
+      <RegisterForm/>
+    </main>
   )
 }
 
