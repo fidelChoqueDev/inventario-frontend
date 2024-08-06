@@ -1,6 +1,7 @@
 import { useState } from "react";
-import InputForm from "../InputForm/InputForm";
+import InputForm from "../InputForm/InputForm.tsx";
 import "./RegisterForm.css";
+import Button from "../Button/Button.tsx";
 
 const RegisterForm = () => {
   const [formData, setFormData] = useState({
@@ -107,7 +108,7 @@ const RegisterForm = () => {
         />
       ))}
 
-      <button>Crear Cuenta</button>
+      <Button content="Crear cuenta" className="btn btn-dark" />
     </form>
   );
 };
