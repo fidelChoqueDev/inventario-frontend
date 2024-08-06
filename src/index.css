@@ -39,6 +39,7 @@ html {
 }
 
 body {
+  font-family: "BalsamiqSans";
   min-height: 100dvh;
   margin: 0;
   line-height: 1.5;
@@ -60,6 +61,14 @@ button,
 textarea,
 select {
   font: inherit;
+}
+
+input {
+  background-color: transparent;
+}
+
+input:focus {
+  outline: none;
 }
 
 h1,
@@ -90,4 +99,3 @@ body {
   padding: 1rem;
   font-family: 'BalsamiqSans';
 }
-
