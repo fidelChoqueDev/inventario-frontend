@@ -1,25 +1,25 @@
 div {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 div span {
-    color: var(--clr-error);
-    display: none;
+  color: var(--clr-error);
+  display: none;
 }
 
 input {
-    border: 2px solid var(--clr-black50);
-    border-radius: var(--border-sm);
-    padding: .5rem 1.5rem;
-    color: var(--clr-black60);
+  border: 2px solid var(--clr-black50);
+  border-radius: var(--border-sm);
+  padding: 0.5rem 1.5rem;
 }
 
 input:invalid[focused="true"] {
-    border-color: var(--clr-error-border);
-    color: var(--clr-error)
+  border-color: var(--clr-error-border);
+  color: var(--clr-error);
 }
 
 input:invalid[focused="true"] ~ span {
-    display: block
+  display: block;
 }
+
