@@ -7,6 +7,7 @@ import  CreateUserPage  from "./pages/CreateUserPage";
 import DashboardPage from './pages/DashboardPage';
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { ProductPage } from './pages/ProductPage';
 
 const router = createBrowserRouter([
   {path: '/',
@@ -21,6 +22,9 @@ const router = createBrowserRouter([
   {
     path: '/dashboard',
     element: <DashboardPage/>
+  },{
+    path: '/productAdd',
+    element: <ProductPage />
   }
 ]);
 
