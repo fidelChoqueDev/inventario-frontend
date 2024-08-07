@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./InputPasswordForm.css";
 import Icon from "../Icon/Icon";
+
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   error?: string;
 }
@@ -11,7 +12,6 @@ export default function InputPasswordForm(props: Props) {
   return (
     <div className="container-input-password">
       <input
-        minLength={15}
         className="c-input-password"
         type={showPassword ? "text" : "password"}
         {...props}
