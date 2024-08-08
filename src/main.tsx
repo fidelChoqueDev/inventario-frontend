@@ -7,6 +7,7 @@ import  RegisterUserPage  from "./pages/RegisterUserPage";
 import DashboardPage from './pages/DashboardPage';
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import RecoverPasswordPage from './pages/RecoverPasswordPage';
 
 const router = createBrowserRouter([
   {path: '/',
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
   {
     path: '/dashboard',
     element: <DashboardPage/>
+  },
+  {
+    path: '/recover',
+    element: <RecoverPasswordPage/>
   }
 ]);
 
