@@ -11,7 +11,7 @@
 
 ## Sobre el proyecto
 
-Zakio es una herramienta integral diseñada para ayudar a las empresas a manejar sus inventarios de manera eficiente y efectiva. Esta aplicación permite a los usuarios realizar un seguimiento de sus productos. Ideal para pequeñas y medianas empresas, la aplicación ofrece una interfaz intuitiva y funcionalidades robustas que facilitan el control y la optimización del inventario.
+Zaiko es una herramienta integral diseñada para ayudar a las empresas a manejar sus inventarios de manera eficiente y efectiva. Esta aplicación permite a los usuarios realizar un seguimiento de sus productos. Ideal para pequeñas y medianas empresas, la aplicación ofrece una interfaz intuitiva y funcionalidades robustas que facilitan el control y la optimización del inventario.
 
 ## Características principales
 
@@ -38,7 +38,7 @@ Para clonar y ejecutar localmente ejecutar los siguientes pasos:
 
   2. Instalar las dependencias
    ```bash
-   pnpm run dev
+   pnpm install
    ```
   
   3. Desplegar el proyecto localmente
