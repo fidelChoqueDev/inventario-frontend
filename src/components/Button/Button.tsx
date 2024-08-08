@@ -1,17 +1,22 @@
-import './Button.css'
+import "./Button.css";
 
 interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   // Custom properties
-  disabled?: boolean
-  handleClick?: React.MouseEventHandler<HTMLButtonElement>
+  variant: "Primary" | "Secondary";
 }
 
-const Button = ({ content, handleClick , ...props}: ButtonProps) => {
+const buttonVariants = {
+  Primary: "c-btn--primary",
+  Secondary: "c-btn--secondary",
+};
+
+const Button = ({ variant, children, ...props }: ButtonProps) => {
+  const classToApply = buttonVariants[variant] ?? "";
   return (
-    <button {...props} onClick={handleClick}>
-      {content}
-      </button>
-  )
-}
+    <button className={`c-btn ${classToApply}`} {...props}>
+      {children}
+    </button>
+  );
+};
 
-export default Button
+export default Button;
