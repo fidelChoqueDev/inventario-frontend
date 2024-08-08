@@ -1,10 +1,11 @@
 /* Custom variables */
 :root {
-  --clr-primary: #1a1a1a;
-  --clr-black60: #00000099;
-  --clr-black50: #00000080;
+  --clr-primary: #312e2a;
+  --clr-primary-70: #312e2ab3;
+  --clr-primary-60: #312e2a99;
   --clr-secondary: #fcfaf8;
   --clr-accent: #a2562c;
+  --clr-accent-variant: #784021;
   --clr-error: #f17989;
   --clr-error-border: #f09b9d;
   --clr-success: #5a8b29;
@@ -69,6 +70,10 @@ input {
 
 input:focus {
   outline: none;
+}
+
+button {
+  border: none;
 }
 
 h1,
