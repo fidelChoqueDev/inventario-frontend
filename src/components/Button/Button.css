@@ -1,9 +1,46 @@
-.btn {
+.c-btn {
+  padding-block: 1rem;
   border-radius: 0.25rem;
   text-transform: uppercase;
 }
 
-.btn-dark {
+.c-btn--primary {
+  background-color: var(--clr-accent);
+  color: var(--clr-secondary);
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--clr-accent-variant);
+  }
+  &:active {
+    background-color: var(--clr-primary);
+  }
+  &:disabled {
+    background-color: var(--clr-primary-70);
+    cursor: not-allowed;
+  }
+}
+
+.c-btn--secondary {
+  background-color: var(--clr-secondary);
+  border: 1px solid var(--clr-accent);
+  color: var(--clr-primary);
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: inset 0 0 0 1px var(--clr-accent);
+  }
+  &:active {
+    background-color: var(--clr-accent);
+    color: var(--clr-secondary);
+  }
+  &:disabled {
+    background-color: var(--clr-primary-70);
+    cursor: not-allowed;
+  }
+}
+
+.c-btn--secondary .c-btn--secondary .btn-dark {
   background-color: #1a1a1a;
   color: #ffffff;
 }
