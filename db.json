@@ -1,0 +1,11 @@
+{
+  "users": [
+    {
+      "id": "e473",
+      "name": "Developer Developer Developer",
+      "email": "correo@gmail.com",
+      "password": "Miguel1234%",
+      "role": "user"
+    }
+  ]
+}
