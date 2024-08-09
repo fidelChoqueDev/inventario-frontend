@@ -8,6 +8,7 @@ import DashboardPage from './pages/DashboardPage';
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import RecoverPasswordPage from './pages/RecoverPasswordPage';
+import { ProductPage } from './pages/ProductPage';
 
 const router = createBrowserRouter([
   {path: '/',
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
   {
     path: '/recover',
     element: <RecoverPasswordPage/>
+  },
+  {
+    path: '/productRegister',
+    element: <ProductPage/>
   }
 ]);
 

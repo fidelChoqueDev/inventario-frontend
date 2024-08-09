@@ -1,5 +1,4 @@
-import React from 'react'
-import ProductsAdd from '../components/ProductsAdd'
+import ProductsAdd from '../components/ProductForm/ProductsAdd'
 
 export const ProductPage = () => {
   return (

@@ -4,7 +4,7 @@ export interface addProduct {
     supplier: string,
     UnitPrice: number,
     imagen:string,
-    entry: number,
-    exit: number,
-    residue: number
+    description: string,
+    category: string,
+    warehouse: string
 }
