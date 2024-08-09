@@ -57,6 +57,10 @@ const ProductsAdd = () => {
             <label htmlFor="name">Imagen: </label>
             <input type="file" name="imagen" id="imagen" placeholder="Imagen del producto" onChange={handleChangeInput} value={formData.imagen}  />
           </div>
+
+          <div>
+            <button>Save</button>
+          </div>
         </form>
       </article>
     </section>
