@@ -1,7 +1,7 @@
 .svg-eye path {
-  stroke: var(--clr-primary);
+  stroke: var(--clr-secondary);
 }
 
 .svg-arrow-left path {
-  fill: var(--clr-primary);
+  fill: var(--clr-secondary);
 }

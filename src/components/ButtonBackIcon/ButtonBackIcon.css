@@ -5,23 +5,23 @@
   width: 2.5rem;
   height: 2.5rem;
   padding: 0.5rem;
-  background-color: var(--clr-secondary);
+  background-color: var(--clr-background);
   border-radius: 6px;
-  border: 2px solid var(--clr-accent);
+  border: 2px solid var(--clr-primary);
 }
 
 .c-btn-back-icon:hover {
-  background-color: var(--clr-accent);
+  background-color: var(--clr-primary);
 }
 .c-btn-back-icon:active {
-  background-color: var(--clr-primary);
-  border-color: var(--clr-primary);
+  background-color: var(--clr-seconday);
+  border-color: var(--clr-seconday);
 }
 .c-btn-back-icon:active svg path {
-  fill: var(--clr-secondary);
+  fill: var(--clr-background);
 }
 .c-btn-back-icon:hover svg path {
-  fill: var(--clr-secondary);
+  fill: var(--clr-background);
 }
 .c-btn-back-icon svg {
   width: 80%;
