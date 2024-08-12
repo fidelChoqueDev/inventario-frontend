@@ -4,19 +4,19 @@ div {
 }
 
 div span {
-  color: var(--clr-error);
+  color: var(--clr-critical);
   display: none;
 }
 
 input {
-  border: 2px solid var(--clr-primary-60);
+  border: 2px solid var(--clr-secondary-60);
   border-radius: var(--border-sm);
   padding: 0.5rem 1.5rem;
 }
 
 input:invalid[focused="true"] {
-  border-color: var(--clr-error-border);
-  color: var(--clr-error);
+  border-color: var(--clr-critical-secondary);
+  color: var(--clr-critical);
 }
 
 input:invalid[focused="true"] ~ span {
