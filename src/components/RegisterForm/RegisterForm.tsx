@@ -91,7 +91,8 @@ const RegisterForm = () => {
       }
 
       const data = await response.json();
-      console.log("Registro exitoso", data);
+
+      console.log('Registro exitoso', data)
     } catch (error) {
       console.error("Error", error);
     }
@@ -108,7 +109,7 @@ const RegisterForm = () => {
         />
       ))}
 
-      <Button content="Crear cuenta" className="btn btn-dark" />
+      <Button variant="Primary">Crear Cuenta</Button>
     </form>
   );
 };
