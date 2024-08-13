@@ -24,8 +24,4 @@
   max-width: max(12rem, 90%);
   background-color: white;
   border-radius: 0.5rem;
-
-  & p {
-    font-size: 1.5rem;
-  }
 }
