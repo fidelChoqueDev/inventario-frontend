@@ -1,0 +1,10 @@
+.c-custom-link {
+  color: var(--clr-primary);
+
+  &:hover {
+    color: var(--clr-primary-variant);
+  }
+  &:active {
+    color: var(--clr-secondary);
+  }
+}
