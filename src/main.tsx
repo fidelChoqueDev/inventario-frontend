@@ -9,6 +9,7 @@ import DashboardPage from "./pages/DashboardPage";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RecoverPasswordPage from "./pages/RecoverPasswordPage";
 import QuestionPage from "./pages/QuestionPage";
+import NewPasswordPage from "./pages/NewPasswordPage";
 
 const router = createBrowserRouter([
   { path: "/", element: <HomePage /> },
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
   {
     path: "/question",
     element: <QuestionPage />,
+  },
+  {
+    path: "/password",
+    element: <NewPasswordPage />,
   },
 ]);
 
