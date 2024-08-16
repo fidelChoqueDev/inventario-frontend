@@ -41,9 +41,11 @@ export const useFetch = (url: string, options?: UseFetchOptions) => {
 
       const result = await response.json();
       setData(result);
-    } catch (err) {
-      if (err.name !== "AbortError") {
+    } catch (err: unknown) {
+      if (err instanceof Error) {
         setError(err);
+      } else {
+        setError(new Error("Un error desconocido ha ocurrido."));
       }
     } finally {
       setIsLoading(false);
