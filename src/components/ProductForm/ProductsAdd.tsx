@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { addProduct } from "../../interfaces";
 import "./ProductsAdd.css"
+import logo from '../../../public/clean-box.png'
 
 const ProductsAdd = () => {
   const [formData, setFormData] = useState<addProduct>({
@@ -52,8 +53,10 @@ const ProductsAdd = () => {
   };
   
   return (
+    <>
+      <img src={logo} alt="Logo de empresa" />
       <article>
-        <h1>Ingreso Nuevo Producto</h1>
+        <h1 className="title">Ingreso Nuevo Producto</h1>
         <form onSubmit={handleSubmit}>
           <div>
             <label htmlFor="name">Name: </label>
@@ -121,7 +124,7 @@ const ProductsAdd = () => {
           </div>
         </form>
       </article>
-    
+    </>
   );
 }
 export default ProductsAdd;
