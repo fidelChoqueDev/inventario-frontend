@@ -1,19 +1,16 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import Button from "../components/Button/Button";
 import ButtonBackIcon from "../components/ButtonBackIcon/ButtonBackIcon";
 import InputPasswordForm from "../components/InputPasswordForm/InputPasswordForm";
 import ErrorMessage from "../components/ErrorMessage/ErrorMessage";
 
 const NewPasswordPage = () => {
-  const passwordRef = useRef<HTMLInputElement>(null);
-  const passwordCheckRef = useRef<HTMLInputElement>(null);
+  const [password, setPassword] = useState("");
+  const [passwordCheck, setPasswordCheck] = useState("");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    const password = passwordRef.current?.value;
-    const passwordCheck = passwordCheckRef.current?.value;
 
     if (!password || !passwordCheck) {
       setErrorMessage("Ambos campos son obligatorios");
@@ -28,6 +25,8 @@ const NewPasswordPage = () => {
     setErrorMessage(null);
 
     // Send password to back
+
+    console.log("Contraseña enviada correctamente");
   };
 
   return (
@@ -40,10 +39,23 @@ const NewPasswordPage = () => {
       </div>
 
       <form onSubmit={handleSubmit}>
-        <InputPasswordForm ref={passwordRef} placeholder="Contraseña" aria-label="NUeva contraseña" />
         <InputPasswordForm
-          ref={passwordCheckRef}
-          placeholder="Repetir la contraseña" aria-label="Repetir nueva contraseña"
+          name="password"
+          required
+          pattern="^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$"
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
+          placeholder="Contraseña"
+          aria-label="Nueva contraseña"
+        />
+        <InputPasswordForm
+          name="passwordCheck"
+          required
+          pattern="^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$"
+          value={passwordCheck}
+          onChange={(event) => setPasswordCheck(event.target.value)}
+          placeholder="Repetir la contraseña"
+          aria-label="Repetir nueva contraseña"
         />
 
         {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
