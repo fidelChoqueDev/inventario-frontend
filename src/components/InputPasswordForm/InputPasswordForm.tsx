@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ForwardedRef, forwardRef, useState } from "react";
 import "./InputPasswordForm.css";
 import Icon from "../Icon/Icon";
 
@@ -6,7 +6,10 @@ interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   error?: string;
 }
 
-export default function InputPasswordForm(props: Props) {
+const InputPasswordForm = forwardRef(function InputPasswordForm(
+  props: Props,
+  ref: ForwardedRef<HTMLInputElement>
+) {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
@@ -14,6 +17,7 @@ export default function InputPasswordForm(props: Props) {
       <input
         className="c-input-password"
         type={showPassword ? "text" : "password"}
+        ref={ref}
         {...props}
       />
       <div className="c-checkbox-show-password">
@@ -28,4 +32,6 @@ export default function InputPasswordForm(props: Props) {
       </div>
     </div>
   );
-}
+});
+
+export default InputPasswordForm;
