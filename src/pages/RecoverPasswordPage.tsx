@@ -10,7 +10,7 @@ const RecoverPasswordPage = () => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const endpoint = 'http://api.com/user/recovery_password'
+    const endpoint = "http://api.com/user/recovery_password";
 
     try {
       const response = await fetch(endpoint, {
@@ -35,8 +35,8 @@ const RecoverPasswordPage = () => {
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(event.target.value)
-  }
+    setEmail(event.target.value);
+  };
 
   return (
     <main>
@@ -59,7 +59,7 @@ const RecoverPasswordPage = () => {
           handleChange={handleChange}
         />
 
-        <Button className="btn btn-dark" content="Recuperar contraseña" />
+        <Button variant="Primary">Recuperar contraseña</Button>
       </form>
     </main>
   );
