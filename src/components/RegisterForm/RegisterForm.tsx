@@ -3,8 +3,16 @@ import InputForm from "../InputForm/InputForm.tsx";
 import "./RegisterForm.css";
 import Button from "../Button/Button.tsx";
 
+interface IFormData {
+  fullname: string;
+  phone: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+}
+
 const RegisterForm = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<IFormData>({
     fullname: "",
     phone: "",
     email: "",
@@ -92,7 +100,7 @@ const RegisterForm = () => {
 
       const data = await response.json();
 
-      console.log('Registro exitoso', data)
+      console.log("Registro exitoso", data);
     } catch (error) {
       console.error("Error", error);
     }
@@ -103,12 +111,16 @@ const RegisterForm = () => {
       {inputs.map((input) => (
         <InputForm
           key={input.id}
-          {...input}
-          value={formData[input.name]}
-          handleChange={handleChange}
+          name={input.name}
+          type={input.type}
+          placeholder={input.placeholder}
+          errorMessage={input.errorMessage}
+          required={input.required}
+          pattern={input.pattern ?? ""}
+          value={formData[input.name as keyof IFormData]}
+          onChange={handleChange}
         />
       ))}
-
       <Button variant="Primary">Crear Cuenta</Button>
     </form>
   );

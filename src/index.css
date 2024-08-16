@@ -111,3 +111,9 @@ body {
   padding: 1rem;
   font-family: "BalsamiqSans";
 }
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
