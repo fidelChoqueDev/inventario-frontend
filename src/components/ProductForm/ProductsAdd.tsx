@@ -22,6 +22,7 @@ const ProductsAdd = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     console.log('entro')
     e.preventDefault();
+    console.log(formData)
     const backendUrl = "http://localhost:5000/products";
 
     try{
@@ -55,7 +56,13 @@ const ProductsAdd = () => {
         <form onSubmit={handleSubmit}>
           <div>
             <label htmlFor="name">Name: </label>
-            <input type="text" name="name" id="name" onChange={handleChangeInput} value={formData.name} required placeholder="ej: El Padrino, El testamento Maya, Jerusalen: Caballo de troya" />
+            <input 
+              type="text" 
+              name="name" 
+              id="name" 
+              onChange={handleChangeInput} 
+              value={formData.name} 
+              required placeholder="ej: El Padrino, El testamento Maya, Jerusalen: Caballo de troya" />
           </div>
           <div>
             <label htmlFor="name">Description: </label>
@@ -67,7 +74,7 @@ const ProductsAdd = () => {
           </div>
           <div>
             <label htmlFor="name">Unit Price: </label>
-            <input type="text" name="unitprice" id="unitprice" placeholder="precio del producto" onChange={handleChangeInput} value={formData.UnitPrice}  />
+            <input type="text" name="UnitPrice" id="UnitPrice" placeholder="precio del producto" onChange={handleChangeInput} value={formData.UnitPrice}  />
           </div>
           <div>
             <label htmlFor="name">Category: </label>
