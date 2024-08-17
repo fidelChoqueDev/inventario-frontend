@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { addProduct } from "../../interfaces";
-import "./ProductsAdd.css"
-import logo from '../../../public/clean-box.png'
+import style from "./ProductsAdd.module.css"
+import logo from '/clean-box.png'
 
 const ProductsAdd = () => {
   const [formData, setFormData] = useState<addProduct>({
@@ -54,9 +54,9 @@ const ProductsAdd = () => {
   
   return (
     <>
-      <img src={logo} alt="Logo de empresa" />
-      <article>
-        <h1 className="title">Ingreso Nuevo Producto</h1>
+      <div className={style.conteiner}>
+        <img src={logo} alt="Logo de empresa" />
+        <h1 className={style.title}>Ingreso Nuevo Producto</h1>
         <form onSubmit={handleSubmit}>
           <div>
             <label htmlFor="name">Name: </label>
@@ -66,7 +66,7 @@ const ProductsAdd = () => {
               id="name" 
               onChange={handleChangeInput} 
               value={formData.name} 
-              required placeholder="ej: El Padrino, El testamento Maya, Jerusalen: Caballo de troya" />
+              required placeholder="ej: El Padrino, El testamento Maya" />
           </div>
           <div>
             <label htmlFor="name">Description: </label>
@@ -76,7 +76,7 @@ const ProductsAdd = () => {
               id="description" 
               onChange={handleChangeInput} 
               value={formData.description} 
-              placeholder="descripcion del producto" />
+              placeholder=" product descripcion" />
           </div>
           <div>
             <label htmlFor="name">Supplier: </label>
@@ -84,7 +84,7 @@ const ProductsAdd = () => {
               type="text" 
               name="supplier" 
               id="suplier" 
-              placeholder="Proveedor del producto" 
+              placeholder="supplier's name" 
               onChange={handleChangeInput} 
               value={formData.supplier}  />
           </div>
@@ -94,7 +94,7 @@ const ProductsAdd = () => {
               type="text" 
               name="UnitPrice" 
               id="UnitPrice" 
-              placeholder="precio del producto" 
+              placeholder="price of the product" 
               onChange={handleChangeInput} 
               value={formData.UnitPrice}  />
           </div>
@@ -104,7 +104,7 @@ const ProductsAdd = () => {
               type="text" 
               name="category" 
               id="category" 
-              placeholder="categoria del producto" 
+              placeholder="category that corresponds to the product" 
               onChange={handleChangeInput} 
               value={formData.category}  />
           </div>
@@ -114,16 +114,17 @@ const ProductsAdd = () => {
               type="file" 
               name="imagen" 
               id="imagen" 
-              placeholder="Imagen del producto" 
+              placeholder="product photo" 
               onChange={handleChangeInput} 
               value={formData.imagen}  />
           </div>
 
-          <div>
+          <div className={style.containerButton}>
+            <button type="reset">cancel</button>
             <button type="submit">Save</button>
           </div>
         </form>
-      </article>
+      </div>
     </>
   );
 }
