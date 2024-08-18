@@ -42,6 +42,7 @@ const SecurityQuestion = (props: Props) => {
             </option>
           ))}
         </select>
+        <div className="security-question-arrow"></div>
       </div>
       <div className="security-question-input">
         <input
@@ -52,7 +53,6 @@ const SecurityQuestion = (props: Props) => {
           onChange={onAnswerChange}
           onFocus={handleFocus}
           data-focused={focused.toString()}
-          className="c-input"
         />
         <ErrorMessage>{errorMessage}</ErrorMessage>
       </div>
