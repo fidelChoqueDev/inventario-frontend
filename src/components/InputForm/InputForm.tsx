@@ -8,7 +8,7 @@ interface Props extends React.HTMLAttributes<HTMLInputElement> {
   type: string;
   placeholder: string;
   required: boolean;
-  pattern: string;
+  pattern?: string;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
