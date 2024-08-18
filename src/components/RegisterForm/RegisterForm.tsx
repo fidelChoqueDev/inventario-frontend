@@ -2,86 +2,52 @@ import { useState } from "react";
 import InputForm from "../InputForm/InputForm.tsx";
 import "./RegisterForm.css";
 import Button from "../Button/Button.tsx";
+import SecurityQuestion from "../SecurityQuestion/SecurityQuestion.tsx";
 
 interface IFormData {
   fullname: string;
   phone: string;
   email: string;
+  secretQuestion: string;
+  secretAnswer: string;
   password: string;
   confirmPassword: string;
 }
+
+const questionOptions = [
+  "¿Cúal es el nombre de tu mascota?",
+  "¿Cúal es el nombre de tu primer colegio?",
+  "¿Cúal es tu comida favorita",
+];
 
 const RegisterForm = () => {
   const [formData, setFormData] = useState<IFormData>({
     fullname: "",
     phone: "",
     email: "",
+    secretQuestion: "Cúal es el nombre de tu mascota?",
+    secretAnswer: "",
     password: "",
     confirmPassword: "",
   });
-
-  const inputs = [
-    {
-      id: 1,
-      name: "fullname",
-      type: "text",
-      placeholder: "Nombre Completo",
-      errorMessage:
-        "Debe contener entre 3 y 16 carácteres y no puede contener ningún carácter especial.",
-      required: true,
-      pattern: "^[a-zA-Z]{4,}(?: [a-zA-Z]+){0,2}$",
-    },
-    {
-      id: 2,
-      name: "phone",
-      type: "tel",
-      placeholder: "Télefono",
-      errorMessage: "Solo debe contener números.",
-      pattern: "^[0-9]{9,12}$",
-      required: true,
-    },
-    {
-      id: 3,
-      name: "email",
-      type: "email",
-      placeholder: "Correo electrónico",
-      errorMessage: "Debe ser un formato de email válido.",
-      required: true,
-    },
-    {
-      id: 4,
-      name: "password",
-      type: "password",
-      placeholder: "Contraseña",
-      errorMessage:
-        "Debe contener entre 8 y 20 carácteres y incluir una mayúscula, minúsculas, números y algún carácter especial.",
-      required: true,
-      pattern:
-        "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$",
-    },
-    {
-      id: 5,
-      name: "confirmPassword",
-      type: "password",
-      placeholder: "Confirmar contraseña",
-      errorMessage: "Las contraseñas no coinciden.",
-      required: true,
-      pattern: formData.password,
-    },
-  ];
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
+  const handleQuestionChange = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    setFormData({...formData, secretQuestion: event.target.value})
+  };
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const localEndpoint = "http://localhost:5000/users";
-    // const testEndpoint = 'http://api.com/user/register'
+    const url = "http://localhost:5000/users";
 
     try {
-      const response = await fetch(localEndpoint, {
+      const response = await fetch(url, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -108,19 +74,51 @@ const RegisterForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      {inputs.map((input) => (
-        <InputForm
-          key={input.id}
-          name={input.name}
-          type={input.type}
-          placeholder={input.placeholder}
-          errorMessage={input.errorMessage}
-          required={input.required}
-          pattern={input.pattern ?? ""}
-          value={formData[input.name as keyof IFormData]}
-          onChange={handleChange}
-        />
-      ))}
+      <InputForm
+        key="1"
+        name="fullname"
+        type="text"
+        placeholder="Nombre completo"
+        errorMessage="Debe contener entre 3 y 16 carácteres y no puede contener ningún carácter especial."
+        required
+        pattern="^[a-zA-Z]{4,}(?: [a-zA-Z]+){0,2}$"
+        value={formData.fullname}
+        onChange={handleChange}
+      />
+
+      <InputForm
+        key="2"
+        name="phone"
+        type="tel"
+        placeholder="Télefono"
+        errorMessage="Solo debe contener números"
+        required
+        pattern="^[0-9]{9,12}$"
+        value={formData.phone}
+        onChange={handleChange}
+      />
+
+      <InputForm
+        key="3"
+        name="email"
+        type="email"
+        placeholder="Correo electrónico"
+        errorMessage="Debe ser un formato de correo electrónico válido"
+        required
+        pattern=""
+        value={formData.phone}
+        onChange={handleChange}
+      />
+
+      <SecurityQuestion
+        questionOptions={questionOptions}
+        selectedQuestion={formData.secretQuestion}
+        onQuestionChange={handleQuestionChange}
+        answer={formData.secretAnswer}
+        onAnswerChange={handleChange}
+        errorMessage="Debe tener una respuesta"
+      />
+
       <Button variant="Primary">Crear Cuenta</Button>
     </form>
   );
