@@ -54,7 +54,7 @@ export default function PasswordInputWithRequirements({
       <InputPasswordForm
         name="passwordConfirmation"
         errorMessage={errorMessages.passwordConfirmation}
-        placeholder="Contraseña"
+        placeholder="Repetir contraseña"
         value={passwordConfirmation}
         pattern={pattern}
         required={true}
