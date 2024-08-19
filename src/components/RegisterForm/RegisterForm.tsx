@@ -4,6 +4,9 @@ import "./RegisterForm.css";
 import Button from "../Button/Button.tsx";
 import SecurityQuestion from "../SecurityQuestion/SecurityQuestion.tsx";
 import InputPhoneForm from "../InputPhoneForm/InputPhoneForm.tsx";
+import { useFetch } from "../../hooks/useFetch.ts";
+import ErrorMessage from "../ErrorMessage/ErrorMessage.tsx";
+import InputPasswordForm from "../InputPasswordForm/InputPasswordForm.tsx";
 
 interface IFormData {
   fullname: string;
@@ -37,6 +40,10 @@ const RegisterForm = () => {
     confirmPassword: "",
   });
 
+  const url = "http://localhost:8050/user/add";
+
+  const { submit, error, isLoading } = useFetch(url);
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
@@ -60,36 +67,17 @@ const RegisterForm = () => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const url = "http://localhost:8050/user/add";
-
-    try {
-      const response = await fetch(url, {
-        method: "POST",
-        mode: 'no-cors',
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          fullname: formData.fullname,
-          email: formData.email,
-          phone: formData.countryCode + formData.phone,
-          secretAnswer: formData.secretAnswer,
-          secretQuestion: formData.secretQuestion,
-          password: formData.password,
-          role: "user",
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error("Error en el registro");
-      }
-
-      const data = await response.json();
-
-      console.log("Registro exitoso", data);
-    } catch (error) {
-      console.error("Error", error);
-    }
+    await submit({
+      body: {
+        fullname: formData.fullname,
+        email: formData.email,
+        phone: formData.countryCode + formData.phone,
+        secretAnswer: formData.secretAnswer,
+        secretQuestion: formData.secretQuestion,
+        password: formData.password,
+        role: "user",
+      },
+    });
   };
 
   return (
@@ -109,7 +97,6 @@ const RegisterForm = () => {
         name="phone"
         placeholder="Introduce tu número"
         required
-        pattern="/^\s*(?:\+?(\d{1,3}))?([-. (]*(\d{3})[-. )]*)?((\d{3})[-. ]*(\d{2,4})(?:[-.x ]*(\d+))?)\s*$/gm"
         value={formData.phone}
         onChange={handlePhoneChange}
         errorMessage="Número no válido"
@@ -135,6 +122,30 @@ const RegisterForm = () => {
         onAnswerChange={handleChange}
         errorMessage="Debe contener entre 3 y 50 carácteres."
       />
+
+      <InputPasswordForm
+        name="password"
+        placeholder="Inserta tu contraseña"
+        errorMessage="Al menos 8 caracteres, mayúscula, minúscula y un número."
+        required
+        pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm"
+        value={formData.password}
+        onChange={handleChange}
+      />
+
+      <InputPasswordForm
+        name="confirmPassword"
+        placeholder="Confirma tu contraseña"
+        errorMessage="Las contraseñas deben coincidir"
+        required
+        pattern={formData.password}
+        value={formData.confirmPassword}
+        onChange={handleChange}
+      />
+
+      {isLoading && "Registrandose..."}
+
+      {error && <ErrorMessage>{error.message}</ErrorMessage>}
 
       <Button variant="Primary">Crear Cuenta</Button>
     </form>
