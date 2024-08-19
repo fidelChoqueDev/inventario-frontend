@@ -7,7 +7,7 @@ interface Props extends React.HTMLAttributes<HTMLInputElement> {
   name: string;
   placeholder: string;
   required: boolean;
-  pattern: string;
+  pattern?: string;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onCountryChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
