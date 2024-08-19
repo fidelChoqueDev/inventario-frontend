@@ -30,6 +30,7 @@ export const useFetch = (url: string, options?: UseFetchOptions) => {
     try {
       const response = await fetch(url, {
         method,
+        mode: "no-cors",
         headers,
         body: body ? JSON.stringify(body) : null,
         signal,
