@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useId, useState } from "react";
 import "./InputPasswordForm.css";
 import Icon from "../Icon/Icon";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
@@ -17,9 +17,10 @@ export default function InputPasswordForm(props: Props) {
   const { errorMessage, ...rest } = props;
   const [focused, setFocused] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const idShowPassword = useId();
 
   return (
-    <div className="container-input">
+    <div className="input-container">
       <div className="container-input-password">
         <input
           className="c-input-password"
@@ -29,11 +30,11 @@ export default function InputPasswordForm(props: Props) {
           {...rest}
         />
         <div className="c-checkbox-show-password">
-          <label htmlFor="showPassword">
+          <label htmlFor={idShowPassword}>
             <Icon type={showPassword ? "CloseEye" : "OpenEye"} />
           </label>
           <input
-            id="showPassword"
+            id={idShowPassword}
             type="checkbox"
             onClick={() => setShowPassword(!showPassword)}
           />
