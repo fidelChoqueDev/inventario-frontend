@@ -30,13 +30,13 @@ const requirements: IRequirement[] = [
   },
   {
     id: "number",
-    description: "Numero",
+    description: "Número",
     regex: /[0-9]/,
   },
   {
     id: "specialCharacter",
     description: "Símbolo (!@#,$%.^&*:+)",
-    regex: /[!@#$%^&*()_+-={};':"|,.<>?]/,
+    regex: /[!@#$%^&*(),.?":{}|<>]/,
   },
 ];
 
