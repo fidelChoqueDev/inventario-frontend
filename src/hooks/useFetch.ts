@@ -17,7 +17,7 @@ export const useFetch = (url: string, options?: UseFetchOptions) => {
 
     const {
       method = "POST",
-      headers = {'Content-Type': 'application/json' },
+      headers = { "Content-Type": "application/json" },
       body = null,
     } = {
       ...options,
