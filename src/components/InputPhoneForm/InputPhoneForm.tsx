@@ -25,22 +25,22 @@ const InputPhoneForm = (props: Props) => {
   return (
     <>
       <div className="phone-input-container">
-        <div className="phone-input-prefix">
-          <select
-            value={countryCode}
-            onChange={onCountryChange}
-            className="phone-input-select"
-          >
-            <option value="+1">+1</option>
-            <option value="+44">+44</option>
-            <option value="+34">+34</option>
-            <option value="+91">+91</option>
-          </select>
-        </div>
+        <select
+          value={countryCode}
+          onChange={onCountryChange}
+          className="phone-input-select"
+        >
+          <option value="+1">+1</option>
+          <option value="+44">+44</option>
+          <option value="+34">+34</option>
+          <option value="+91">+91</option>
+        </select>
+
         <input
           data-focused={focused.toString()}
           onFocus={handleFocus}
           className="phone-input-number"
+          type="tel"
           {...rest}
         />
       </div>
