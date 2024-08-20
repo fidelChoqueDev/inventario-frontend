@@ -28,7 +28,7 @@ const SecurityQuestion = (props: Props) => {
   };
 
   return (
-    <>
+    <div className="security-question-container">
       <div className="security-question-select">
         <select
           name="secretQuestion"
@@ -56,7 +56,7 @@ const SecurityQuestion = (props: Props) => {
         />
         <ErrorMessage>{errorMessage}</ErrorMessage>
       </div>
-    </>
+    </div>
   );
 };
 
