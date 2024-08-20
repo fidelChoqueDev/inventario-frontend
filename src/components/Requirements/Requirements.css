@@ -1,0 +1,10 @@
+.container-requirements {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.description {
+  margin-top: 0;
+}

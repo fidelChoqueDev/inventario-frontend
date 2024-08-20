@@ -96,6 +96,7 @@ a {
 p {
   overflow-wrap: break-word;
   text-wrap: pretty;
+  text-align: left;
 }
 
 @media (prefers-reduced-motion: no-preference) {
