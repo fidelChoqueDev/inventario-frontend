@@ -5,7 +5,7 @@ import Button from "../Button/Button.tsx";
 import SecurityQuestion from "../SecurityQuestion/SecurityQuestion.tsx";
 import InputPhoneForm from "../InputPhoneForm/InputPhoneForm.tsx";
 import { useFetch } from "../../hooks/useFetch.ts";
-import InputPasswordForm from "../InputPasswordForm/InputPasswordForm.tsx";
+import PasswordInputWithRequirements from "../PasswordInputWithRequirements/PasswordInputWithRequirements.tsx";
 
 interface IFormData {
   fullName: string;
@@ -15,7 +15,6 @@ interface IFormData {
   secretQuestion: string;
   secretAnswer: string;
   password: string;
-  confirmPassword: string;
 }
 
 const questionOptions = [
@@ -36,7 +35,6 @@ const RegisterForm = () => {
     secretQuestion: "Cúal es el nombre de tu mascota?",
     secretAnswer: "",
     password: "",
-    confirmPassword: "",
   });
 
   const url = "http://localhost:8007/user/add";
@@ -122,23 +120,8 @@ const RegisterForm = () => {
         errorMessage="Debe contener entre 3 y 50 carácteres."
       />
 
-      <InputPasswordForm
-        name="password"
-        placeholder="Inserta tu contraseña"
-        errorMessage="Al menos 8 caracteres, mayúscula, minúscula y un número."
-        required
-        pattern="^{8,32}$"
-        value={formData.password}
-        onChange={handleChange}
-      />
-
-      <InputPasswordForm
-        name="confirmPassword"
-        placeholder="Confirma tu contraseña"
-        errorMessage="Las contraseñas deben coincidir"
-        required
-        pattern={formData.password}
-        value={formData.confirmPassword}
+      <PasswordInputWithRequirements
+        passwordValue={formData.password}
         onChange={handleChange}
       />
 
