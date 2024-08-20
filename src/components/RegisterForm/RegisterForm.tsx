@@ -5,11 +5,10 @@ import Button from "../Button/Button.tsx";
 import SecurityQuestion from "../SecurityQuestion/SecurityQuestion.tsx";
 import InputPhoneForm from "../InputPhoneForm/InputPhoneForm.tsx";
 import { useFetch } from "../../hooks/useFetch.ts";
-import ErrorMessage from "../ErrorMessage/ErrorMessage.tsx";
 import InputPasswordForm from "../InputPasswordForm/InputPasswordForm.tsx";
 
 interface IFormData {
-  fullname: string;
+  fullName: string;
   countryCode: string;
   phone: string;
   email: string;
@@ -30,7 +29,7 @@ const questionOptions = [
 
 const RegisterForm = () => {
   const [formData, setFormData] = useState<IFormData>({
-    fullname: "",
+    fullName: "",
     countryCode: "",
     phone: "",
     email: "",
@@ -40,9 +39,9 @@ const RegisterForm = () => {
     confirmPassword: "",
   });
 
-  const url = "http://localhost:8050/user/add";
+  const url = "http://localhost:8007/user/add";
 
-  const { submit, error, isLoading } = useFetch(url);
+  const { submit } = useFetch(url);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -69,7 +68,7 @@ const RegisterForm = () => {
 
     await submit({
       body: {
-        fullname: formData.fullname,
+        fullName: formData.fullName,
         email: formData.email,
         phone: formData.countryCode + formData.phone,
         secretAnswer: formData.secretAnswer,
@@ -83,13 +82,13 @@ const RegisterForm = () => {
   return (
     <form onSubmit={handleSubmit}>
       <InputForm
-        name="fullname"
+        name="fullName"
         type="text"
         placeholder="Nombre completo"
         errorMessage="Entre 3 y 32 carácteres y sin símbolos especiales"
         required
         pattern="^(?=.{4,32}$)[a-zA-Z]{4,}(?: [a-zA-Z]+){0,2}$"
-        value={formData.fullname}
+        value={formData.fullName}
         onChange={handleChange}
       />
 
@@ -128,7 +127,7 @@ const RegisterForm = () => {
         placeholder="Inserta tu contraseña"
         errorMessage="Al menos 8 caracteres, mayúscula, minúscula y un número."
         required
-        pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm"
+        pattern="^{8,32}$"
         value={formData.password}
         onChange={handleChange}
       />
@@ -142,10 +141,6 @@ const RegisterForm = () => {
         value={formData.confirmPassword}
         onChange={handleChange}
       />
-
-      {isLoading && "Registrandose..."}
-
-      {error && <ErrorMessage>{error.message}</ErrorMessage>}
 
       <Button variant="Primary">Crear Cuenta</Button>
     </form>
