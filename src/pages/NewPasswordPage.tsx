@@ -1,64 +1,44 @@
 import { useState } from "react";
 import Button from "../components/Button/Button";
 import ButtonBackIcon from "../components/ButtonBackIcon/ButtonBackIcon";
-import InputPasswordForm from "../components/InputPasswordForm/InputPasswordForm";
-import ErrorMessage from "../components/ErrorMessage/ErrorMessage";
+import PasswordInputWithRequirements from "../components/PasswordInputWithRequirements/PasswordInputWithRequirements";
+import { useFetch } from "../hooks/useFetch";
 
 const NewPasswordPage = () => {
   const [password, setPassword] = useState("");
-  const [passwordCheck, setPasswordCheck] = useState("");
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const url = "http://localhost:8007/user/new";
+  const { submit } = useFetch(url);
+
+  const handlePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(event.target.value);
+  };
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (!password || !passwordCheck) {
-      setErrorMessage("Ambos campos son obligatorios");
-      return;
-    }
-
-    if (password !== passwordCheck) {
-      setErrorMessage("Las contraseñas no son iguales");
-      return;
-    }
-
-    setErrorMessage(null);
-
-    // Send password to back
-
-    console.log("Contraseña enviada correctamente");
+    await submit({
+      body: {
+        password,
+      },
+    });
   };
 
   return (
     <main>
-      <ButtonBackIcon goTo="/" />
+      <ButtonBackIcon goTo="/login" />
       <img src="/clean-box.png" alt="Box" />
+
       <div>
-        <h2>Restablecer la contraseña</h2>
+        <h2>Restablecer contraseña</h2>
         <h3>Ingresa la nueva contraseña</h3>
       </div>
 
       <form onSubmit={handleSubmit}>
-        <InputPasswordForm
-          name="password"
-          required
-          pattern="^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$"
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-          placeholder="Contraseña"
-          aria-label="Nueva contraseña"
+        <PasswordInputWithRequirements
+          passwordValue={password}
+          onChange={handlePassword}
         />
-        <InputPasswordForm
-          name="passwordCheck"
-          required
-          pattern="^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$"
-          value={passwordCheck}
-          onChange={(event) => setPasswordCheck(event.target.value)}
-          placeholder="Repetir la contraseña"
-          aria-label="Repetir nueva contraseña"
-        />
-
-        {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
 
         <Button variant="Primary">Establecer contraseña</Button>
       </form>
