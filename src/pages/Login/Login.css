@@ -1,0 +1,22 @@
+.c-btn-back-icon {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+}
+
+.c-login {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  max-width: 480px;
+  background-color: var(--color-bg-primary);
+}
+
+.c-login svg {
+  margin: 0 auto;
+}
+
+.c-login__text {
+  text-align: center;
+}
