@@ -1,0 +1,21 @@
+.c-form-login {
+  width: 100%;
+}
+
+.c-form-login__inputs {
+  display: flex;
+  gap: 0;
+  flex-direction: column;
+}
+
+.c-form-login__recovery-link {
+  position: relative;
+  top: -1rem;
+  text-align: end;
+}
+
+.c-form-login__error-message {
+  position: relative;
+  top: -0.7rem;
+  text-align: center;
+}
