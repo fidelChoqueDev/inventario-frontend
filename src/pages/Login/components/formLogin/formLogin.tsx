@@ -1,5 +1,5 @@
 import "./formLogin.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import InputForm from "../../../../components/InputForm/InputForm";
 import InputPasswordForm from "../../../../components/InputPasswordForm/InputPasswordForm";
 import CustomLink from "../../../../components/CustomLink/CustomLink";
@@ -17,16 +17,28 @@ const initialUserLogin: IUserLogin = {
   password: "",
 };
 
-const url = "";
+const url = "http://localhost:8007/user/login";
 export default function FormLogin() {
-  const { error, isLoading, data, submit } = useFetch(url);
-  console.log(isLoading, data, submit());
+  const { error, data, submit } = useFetch(url);
   const [userLogin, setUserLogin] = useState<IUserLogin>(initialUserLogin);
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserLogin({ ...userLogin, [e.target.name]: e.target.value });
   };
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    await submit({
+      body: {
+        email: userLogin.email,
+        password: userLogin.password,
+      },
+    });
+  };
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
   return (
-    <form className="c-form-login">
+    <form className="c-form-login" onSubmit={handleSubmit}>
       <div className="c-form-login__inputs">
         <InputForm
           name="email"
@@ -44,7 +56,7 @@ export default function FormLogin() {
           onChange={handleChange}
           errorMessage="&nbsp;"
           required={true}
-          pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*d)(?=.*[@#$%^&+=!])[^]{8,}$"
+          pattern=".{8,}"
         />
       </div>
       <div className="c-form-login__recovery-link">
