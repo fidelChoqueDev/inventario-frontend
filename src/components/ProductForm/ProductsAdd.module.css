@@ -10,7 +10,7 @@ button{
     width: 7rem;
 }
 
-.containerButton{
+.conteinerButton{
    flex-direction: row;
    gap: 2rem;
    justify-content: center;

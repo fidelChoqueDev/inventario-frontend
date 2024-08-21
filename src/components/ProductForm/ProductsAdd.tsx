@@ -9,7 +9,7 @@ const ProductsAdd = () => {
     name: '',
     supplier: '',
     UnitPrice: '',
-    imagen:'',
+    image:'',
     description: '',
     category: '',
     warehouse: ''
@@ -21,12 +21,10 @@ const ProductsAdd = () => {
   }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    console.log('entro')
     e.preventDefault();
     const backendUrl = "https://66bf86b842533c4031466d2b.mockapi.io/zaikoApi/v1/productos";
 
     try{
-      console.log(formData)
       const response = await fetch(backendUrl, {
         method:"POST",
         headers:{
@@ -37,13 +35,13 @@ const ProductsAdd = () => {
         description: formData.description,
         UnitPrice: formData.UnitPrice,
         suppelier: formData.supplier,
-        imagen: formData.imagen,
+        image: formData.image,
         category: formData.category,
         warehouse: formData.warehouse
       }),
     });
 
-    if (!response.ok){throw new Error("Error en el registro");}
+    if (!response.ok){throw new Error("Error in registration");}
 
     const jsonData = await response.json();
     console.log("Registro exitoso", jsonData);
@@ -55,8 +53,8 @@ const ProductsAdd = () => {
   return (
     <>
       <div className={style.conteiner}>
-        <img src={logo} alt="Logo de empresa" />
-        <h1 className={style.title}>Ingreso Nuevo Producto</h1>
+        <img src={logo} alt="Company logo" />
+        <h1 className={style.title}>New product entry</h1>
         <form onSubmit={handleSubmit}>
           <div>
             <label htmlFor="name">Name: </label>
@@ -76,7 +74,7 @@ const ProductsAdd = () => {
               id="description" 
               onChange={handleChangeInput} 
               value={formData.description} 
-              placeholder=" product descripcion" />
+              placeholder="Product descripcion" />
           </div>
           <div>
             <label htmlFor="name">Supplier: </label>
@@ -89,12 +87,12 @@ const ProductsAdd = () => {
               value={formData.supplier}  />
           </div>
           <div>
-            <label htmlFor="name">Unit Price: </label>
+            <label htmlFor="name">Unit price: </label>
             <input 
               type="text" 
               name="UnitPrice" 
               id="UnitPrice" 
-              placeholder="price of the product" 
+              placeholder="Price of the product" 
               onChange={handleChangeInput} 
               value={formData.UnitPrice}  />
           </div>
@@ -104,22 +102,22 @@ const ProductsAdd = () => {
               type="text" 
               name="category" 
               id="category" 
-              placeholder="category that corresponds to the product" 
+              placeholder="Category that corresponds to the product" 
               onChange={handleChangeInput} 
               value={formData.category}  />
           </div>
           <div>
-            <label htmlFor="name">Imagen: </label>
+            <label htmlFor="name">Image: </label>
             <input 
               type="file" 
-              name="imagen" 
-              id="imagen" 
-              placeholder="product photo" 
+              name="image" 
+              id="image" 
+              placeholder="Product photo" 
               onChange={handleChangeInput} 
-              value={formData.imagen}  />
+              value={formData.image}  />
           </div>
 
-          <div className={style.containerButton}>
+          <div className={style.conteinerButton}>
             <button type="reset">cancel</button>
             <button type="submit">Save</button>
           </div>
