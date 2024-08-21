@@ -107,7 +107,7 @@ const RegisterForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="c-form-register" onSubmit={handleSubmit}>
       {inputs.map((input) => (
         <InputForm
           key={input.id}

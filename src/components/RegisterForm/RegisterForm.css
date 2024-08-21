@@ -1,6 +1,5 @@
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+.c-form-register {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
 }
-
