@@ -15,7 +15,6 @@
 }
 
 .c-form-login__error-message {
-  position: relative;
-  top: -0.7rem;
   text-align: center;
+  padding-top: 1rem;
 }
