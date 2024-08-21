@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import HomePage from "./pages/HomePage";
-import LoginPage from "./pages/LoginPage";
+import Login from "./pages/Login/Login";
 import RegisterUserPage from "./pages/RegisterUserPage";
 import DashboardPage from "./pages/DashboardPage";
 
@@ -12,7 +12,7 @@ import QuestionPage from "./pages/QuestionPage";
 
 const router = createBrowserRouter([
   { path: "/", element: <HomePage /> },
-  { path: "/login", element: <LoginPage /> },
+  { path: "/login", element: <Login /> },
   {
     path: "/register",
     element: <RegisterUserPage />,
@@ -34,5 +34,5 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <RouterProvider router={router} />
-  </React.StrictMode>
+  </React.StrictMode>,
 );
