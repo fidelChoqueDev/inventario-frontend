@@ -9,8 +9,8 @@ export default function Login() {
     <div className="c-login">
       <ButtonBackIcon goTo="/" />
       <Icon type="Logo" />
-      <h1>Inicio de sesión</h1>
-      <FormLogin></FormLogin>
+      <h1 className="c-login__title">Iniciar sesión</h1>
+      <FormLogin />
       <p className="c-login__text">
         ¿No tienes una cuenta?{" "}
         <CustomLink to="/register">Regístrate</CustomLink>
