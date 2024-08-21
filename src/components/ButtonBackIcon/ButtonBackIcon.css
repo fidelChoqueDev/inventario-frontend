@@ -14,7 +14,7 @@
   background-color: var(--clr-primary);
 }
 .c-btn-back-icon:active {
-  background-color: var(--clr-seconday);
+  background-color: var(--clr-secondary);
   border-color: var(--clr-seconday);
 }
 .c-btn-back-icon:active svg path {
