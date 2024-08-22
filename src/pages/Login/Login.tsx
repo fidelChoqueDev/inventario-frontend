@@ -1,7 +1,5 @@
 import "./Login.css";
-import ButtonBackIcon from "../../components/ButtonBackIcon/ButtonBackIcon";
-import CustomLink from "../../components/CustomLink/CustomLink";
-import Icon from "../../components/Icon/Icon";
+import { ButtonBackIcon, CustomLink, Icon } from "../../components";
 import FormLogin from "./components/formLogin/formLogin";
 
 export default function Login() {

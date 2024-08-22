@@ -1,10 +1,13 @@
 import "./formLogin.css";
 import { useContext, useEffect, useState } from "react";
-import InputForm from "../../../../components/InputForm/InputForm";
-import InputPasswordForm from "../../../../components/InputPasswordForm/InputPasswordForm";
-import CustomLink from "../../../../components/CustomLink/CustomLink";
-import Button from "../../../../components/Button/Button";
-import ErrorMessage from "../../../../components/ErrorMessage/ErrorMessage";
+import {
+  InputForm,
+  InputPasswordForm,
+  CustomLink,
+  Button,
+  ErrorMessage,
+} from "../../../../components";
+
 import { useFetch } from "../../../../hooks/useFetch";
 import Popup from "../../../../components/Popup/Popup";
 import usePopup from "../../../../hooks/usePopup";
