@@ -1,7 +1,7 @@
 // import "./App.css";
-import HomePage from "./pages/HomePage";
+import HomePage from "./pages/Home/HomePage";
 import Login from "./pages/Login/Login";
-import RegisterUserPage from "./pages/RegisterUserPage";
+import RegisterUserPage from "./pages/Register/RegisterUserPage";
 import DashboardPage from "./pages/DashboardPage";
 import RecoverPasswordPage from "./pages/RecoverPasswordPage";
 import QuestionPage from "./pages/QuestionPage";
