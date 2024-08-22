@@ -4,7 +4,7 @@ import Login from "./pages/Login/Login";
 import RegisterUserPage from "./pages/Register/RegisterUserPage";
 import DashboardPage from "./pages/DashboardPage";
 import RecoverPasswordPage from "./pages/RecoverPassword/RecoverPasswordPage";
-import QuestionPage from "./pages/QuestionPage";
+import QuestionPage from "./pages/Question/QuestionPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import { AuthContext } from "./context/AuthContext";
