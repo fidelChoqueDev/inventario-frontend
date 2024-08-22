@@ -1,10 +1,12 @@
-import './NewPasswordPage.css'
+import "./NewPasswordPage.css";
 import { useState } from "react";
-import { useFetch } from "../hooks/useFetch";
-import Button from "../components/Button/Button";
-import ButtonBackIcon from "../components/ButtonBackIcon/ButtonBackIcon";
-import PasswordInputWithRequirements from "../components/PasswordInputWithRequirements/PasswordInputWithRequirements";
-import HeroLogo from "../components/HeroLogo/HeroLogo";
+import { useFetch } from "../../hooks/useFetch";
+import {
+  Button,
+  ButtonBackIcon,
+  PasswordInputWithRequirements,
+  HeroLogo,
+} from "../../components";
 
 const NewPasswordPage = () => {
   const [password, setPassword] = useState("");
@@ -33,7 +35,7 @@ const NewPasswordPage = () => {
 
       <HeroLogo />
 
-      <header className='reset-password__header'>
+      <header className="reset-password__header">
         <h2>Restablecer contraseña</h2>
         <h3>Ingresa la nueva contraseña</h3>
       </header>
