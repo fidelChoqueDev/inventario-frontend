@@ -35,7 +35,9 @@ export default function FormLogin() {
   const [userLogin, setUserLogin] = useState<IUserLogin>(initialUserLogin);
   const { updateToken } = useContext(AuthContext);
   // Custon Hooks
-  const [isOpen, openPopup] = usePopup(true, 3000, () => navigate("/login"));
+  const [isOpen, openPopup] = usePopup(true, 3000, () =>
+    navigate("/dashboard"),
+  );
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserLogin({ ...userLogin, [e.target.name]: e.target.value });
@@ -50,13 +52,15 @@ export default function FormLogin() {
       },
     });
   };
+
   useEffect(() => {
     if (data) {
       const { access_token } = data as IDataResponse;
       updateToken(access_token);
       openPopup();
     }
-  }, [data, openPopup, updateToken]);
+  }, [data, updateToken, openPopup]);
+
   return (
     <>
       <Popup isOpen={isOpen}>Funciona</Popup>
