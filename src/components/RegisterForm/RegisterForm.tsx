@@ -78,7 +78,7 @@ const RegisterForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="c-form-register" onSubmit={handleSubmit}>
       <InputForm
         name="fullName"
         type="text"
