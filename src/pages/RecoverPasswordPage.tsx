@@ -10,17 +10,15 @@ const RecoverPasswordPage = () => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const endpoint = "http://api.com/user/recovery_password";
+    const url = "http://localhost:8007/user/login/emailrecovery";
 
     try {
-      const response = await fetch(endpoint, {
+      const response = await fetch(url, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          email,
-        }),
+        body: email,
       });
 
       if (!response.ok) {
