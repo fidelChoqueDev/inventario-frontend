@@ -1,17 +1,20 @@
 /* Custom variables */
 :root {
-  --clr-primary: #312e2a;
-  --clr-primary-70: #312e2ab3;
-  --clr-primary-60: #312e2a99;
-  --clr-secondary: #fcfaf8;
-  --clr-accent: #a2562c;
-  --clr-accent-variant: #784021;
-  --clr-error: #f17989;
-  --clr-error-border: #f09b9d;
+  --clr-background: #fcfaf8;
+  --clr-primary: #a2562c;
+  --clr-primary-variant: #784021;
+  --clr-secondary: #312e2a;
+  --clr-secondary-70: #312e2ab3;
+  --clr-secondary-60: #312e2a99;
+  --clr-secondary-30: #312e2a4d;
+  --clr-secondary-10: #312e2a1a;
+  --clr-critical: #cc4749;
+  --clr-critical-secondary: #f16a6c;
+  --clr-warning: #ffc22d;
   --clr-success: #5a8b29;
   --clr-soft: #808080;
-  --clr-text: var(--clr-primary);
-  --clr-main-bg: var(--clr-secondary);
+  --clr-text: var(--clr-secondary);
+  --clr-main-bg: var(--clr-background);
 
   --border-xs: 0.25rem;
   --border-sm: 0.375rem;
@@ -86,9 +89,14 @@ h6 {
   overflow-wrap: break-word;
 }
 
+a {
+  text-decoration: none;
+}
+
 p {
   overflow-wrap: break-word;
   text-wrap: pretty;
+  text-align: left;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -103,4 +111,10 @@ body {
   place-content: center;
   padding: 1rem;
   font-family: "BalsamiqSans";
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }

@@ -1,0 +1,27 @@
+.security-question-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+
+.security-question-dropdown {
+  padding: 1rem;
+  border: 2px solid var(--clr-secondary-60);
+  border-radius: var(--border-sm);
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: white
+    url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path fill="none" stroke="black" d="M0 0l2 2 2-2"/></svg>')
+    no-repeat right 16px center;
+  background-size: 12px;
+}
+
+.security-question-input input {
+  padding: 1rem;
+  border: 2px solid var(--clr-secondary-60);
+  border-radius: var(--border-sm);
+  width: 100%;
+}

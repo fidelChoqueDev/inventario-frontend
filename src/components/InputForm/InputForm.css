@@ -1,24 +1,25 @@
-div {
-  display: flex;
-  flex-direction: column;
-}
-
-div span {
-  color: var(--clr-error);
-  display: none;
-}
-
-input {
-  border: 2px solid var(--clr-primary-60);
+.c-input {
+  border: 2px solid var(--clr-secondary-60);
   border-radius: var(--border-sm);
-  padding: 0.5rem 1.5rem;
-}
+  padding: 1rem;
+  line-height: 1rem;
 
-input:invalid[focused="true"] {
-  border-color: var(--clr-error-border);
-  color: var(--clr-error);
-}
+  &:invalid[data-focused="true"] {
+    border-color: var(--clr-critical-secondary);
 
-input:invalid[focused="true"] ~ span {
-  display: block;
+    & ~ .c-error-message {
+      visibility: visible;
+    }
+  }
+
+  &:hover,
+  &:hover[data-focused="true"],
+  &:hover[data-focused="false"] {
+    border-color: var(--clr-secondary);
+  }
+
+  &:focus[data-focused="true"] {
+    border-color: var(--clr-primary-variant);
+    outline: 1px solid var(--clr-primary-variant);
+  }
 }

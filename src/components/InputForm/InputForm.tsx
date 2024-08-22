@@ -1,24 +1,20 @@
-import { useState } from "react";
 import "./InputForm.css";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import { useState } from "react";
 
-interface InputFormProps extends HTMLInputElement {
-  placeholder: string;
+interface Props extends React.HTMLAttributes<HTMLInputElement> {
+  errorMessage: string;
   name: string;
   type: string;
+  placeholder: string;
+  required: boolean;
+  pattern?: string;
   value: string;
-  errorMessage: string;
-  pattern: string;
-  handleChange: () => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const InputForm = ({
-  placeholder,
-  name,
-  type,
-  errorMessage,
-  pattern,
-  handleChange,
-}: InputFormProps) => {
+const InputForm = (props: Props) => {
+  const { errorMessage, ...rest } = props;
   const [focused, setFocused] = useState<boolean>(false);
 
   const handleFocus = () => {
@@ -26,19 +22,14 @@ const InputForm = ({
   };
 
   return (
-    <div>
+    <div className="input-container">
       <input
-        type={type}
-        name={name}
-        placeholder={placeholder}
-        onChange={handleChange}
-        required
-        pattern={pattern}
-        onBlur={handleFocus}
-        focused={focused.toString()}
-        onFocus={() => name === "confirmPassword" && setFocused(true)}
+        data-focused={focused.toString()}
+        onFocus={handleFocus}
+        className="c-input"
+        {...rest}
       />
-      <span>{errorMessage}</span>
+      <ErrorMessage>{errorMessage}</ErrorMessage>
     </div>
   );
 };
