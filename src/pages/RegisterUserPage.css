@@ -1,4 +1,10 @@
-main {
+.register {
     display: grid;
     place-content: center;
+
+    & .register__title {
+        font-size: 2rem;
+        font-weight: 400;
+        text-align: left;
+    }
 }
