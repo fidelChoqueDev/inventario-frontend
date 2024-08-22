@@ -9,7 +9,7 @@ import HeroLogo from "../components/HeroLogo/HeroLogo";
 const NewPasswordPage = () => {
   const [password, setPassword] = useState("");
 
-  const url = "http://localhost:8007/user/rpassword/reset";
+  const url = "http://localhost:8007/user/password/reset";
   const { submit } = useFetch(url);
 
   const handlePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
