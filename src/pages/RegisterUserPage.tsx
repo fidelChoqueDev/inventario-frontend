@@ -1,14 +1,19 @@
-import ButtonBackIcon from "../components/ButtonBackIcon/ButtonBackIcon.tsx"
-import RegisterForm from "../components/RegisterForm/RegisterForm.tsx"
+import "./RegisterUserPage.css";
+import ButtonBackIcon from "../components/ButtonBackIcon/ButtonBackIcon.tsx";
+import HeroLogo from "../components/HeroLogo/HeroLogo.tsx";
+import RegisterForm from "../components/RegisterForm/RegisterForm.tsx";
 
 const CreateUserPage = () => {
   return (
-    <main>
-      <ButtonBackIcon goTo="/"/>
-      <img src="/clean-box.png" alt="Box" />
-      <RegisterForm/>
-    </main>
-  )
-}
+    <main className="register">
+      <ButtonBackIcon goTo="/" />
+      <HeroLogo />
 
-export default CreateUserPage
+      <h1 className="register__title">Registro</h1>
+
+      <RegisterForm />
+    </main>
+  );
+};
+
+export default CreateUserPage;

@@ -1,0 +1,50 @@
+.phone-input-container {
+  position: relative;
+}
+
+.phone-input-select {
+  position: absolute;
+  left: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0.5rem 0.25rem;
+  color: var(--clr-background);
+  border: 2px solid var(--clr-secondary-60);
+  border-radius: var(--border-sm);
+  min-width: 4.25rem;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: white
+    url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path fill="none" stroke="white" d="M0 0l2 2 2-2"/></svg>')
+    no-repeat right 10px center;
+  background-color: var(--clr-primary);
+  background-size: 12px;
+}
+
+.phone-input-number {
+  padding: 1rem;
+  padding-left: 5rem;
+  width: 100%;
+  border: 2px solid var(--clr-secondary-60);
+  border-radius: var(--border-sm);
+  text-align: left;
+
+  &:hover {
+    border-color: var(--clr-secondary);
+  }
+
+  &:focus {
+    border-color: var(--clr-primary-variant);
+    outline: 1px solid var(--clr-primary-variant);
+  }
+
+  &:invalid[data-focused="true"] {
+    border-color: var(--clr-critical-secondary);
+  }
+}
+
+.phone-input-container:has(.phone-input-number:invalid[data-focused="true"])
+  ~ .c-error-message {
+  visibility: visible;
+}

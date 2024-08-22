@@ -2,125 +2,129 @@ import { useState } from "react";
 import InputForm from "../InputForm/InputForm.tsx";
 import "./RegisterForm.css";
 import Button from "../Button/Button.tsx";
+import SecurityQuestion from "../SecurityQuestion/SecurityQuestion.tsx";
+import InputPhoneForm from "../InputPhoneForm/InputPhoneForm.tsx";
+import { useFetch } from "../../hooks/useFetch.ts";
+import PasswordInputWithRequirements from "../PasswordInputWithRequirements/PasswordInputWithRequirements.tsx";
 
 interface IFormData {
-  fullname: string;
+  fullName: string;
+  countryCode: string;
   phone: string;
   email: string;
+  secretQuestion: string;
+  secretAnswer: string;
   password: string;
-  confirmPassword: string;
 }
+
+const questionOptions = [
+  "¿Cúal es el nombre de tu mascota?",
+  "¿Cúal es el nombre de tu primer colegio?",
+  "¿Cúal es tu comida favorita",
+  "¿Cúal es tu manga favorito",
+  "¿Cúal es tu libro favorito",
+  "¿Cúal es tu pasatiempo favorito",
+];
 
 const RegisterForm = () => {
   const [formData, setFormData] = useState<IFormData>({
-    fullname: "",
+    fullName: "",
+    countryCode: "",
     phone: "",
     email: "",
+    secretQuestion: "Cúal es el nombre de tu mascota?",
+    secretAnswer: "",
     password: "",
-    confirmPassword: "",
   });
 
-  const inputs = [
-    {
-      id: 1,
-      name: "fullname",
-      type: "text",
-      placeholder: "Nombre Completo",
-      errorMessage:
-        "Debe contener entre 3 y 16 carácteres y no puede contener ningún carácter especial.",
-      required: true,
-      pattern: "^[a-zA-Z]{4,}(?: [a-zA-Z]+){0,2}$",
-    },
-    {
-      id: 2,
-      name: "phone",
-      type: "tel",
-      placeholder: "Télefono",
-      errorMessage: "Solo debe contener números.",
-      pattern: "^[0-9]{9,12}$",
-      required: true,
-    },
-    {
-      id: 3,
-      name: "email",
-      type: "email",
-      placeholder: "Correo electrónico",
-      errorMessage: "Debe ser un formato de email válido.",
-      required: true,
-    },
-    {
-      id: 4,
-      name: "password",
-      type: "password",
-      placeholder: "Contraseña",
-      errorMessage:
-        "Debe contener entre 8 y 20 carácteres y incluir una mayúscula, minúsculas, números y algún carácter especial.",
-      required: true,
-      pattern:
-        "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$",
-    },
-    {
-      id: 5,
-      name: "confirmPassword",
-      type: "password",
-      placeholder: "Confirmar contraseña",
-      errorMessage: "Las contraseñas no coinciden.",
-      required: true,
-      pattern: formData.password,
-    },
-  ];
+  const url = "http://localhost:8007/user/add";
+
+  const { submit } = useFetch(url);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
+  const handleQuestionChange = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    setFormData({ ...formData, secretQuestion: event.target.value });
+  };
+
+  const handlePhoneChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({ ...formData, phone: event.target.value });
+  };
+
+  const handleCountryCodeChange = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    setFormData({ ...formData, countryCode: event.target.value });
+  };
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const localEndpoint = "http://localhost:5000/users";
-    // const testEndpoint = 'http://api.com/user/register'
-
-    try {
-      const response = await fetch(localEndpoint, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: formData.fullname,
-          email: formData.email,
-          password: formData.password,
-          role: "user",
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error("Error en el registro");
-      }
-
-      const data = await response.json();
-
-      console.log("Registro exitoso", data);
-    } catch (error) {
-      console.error("Error", error);
-    }
+    await submit({
+      body: {
+        fullName: formData.fullName,
+        email: formData.email,
+        phone: formData.countryCode + formData.phone,
+        secretAnswer: formData.secretAnswer,
+        secretQuestion: formData.secretQuestion,
+        password: formData.password,
+        role: "user",
+      },
+    });
   };
 
   return (
     <form className="c-form-register" onSubmit={handleSubmit}>
-      {inputs.map((input) => (
-        <InputForm
-          key={input.id}
-          name={input.name}
-          type={input.type}
-          placeholder={input.placeholder}
-          errorMessage={input.errorMessage}
-          required={input.required}
-          pattern={input.pattern ?? ""}
-          value={formData[input.name as keyof IFormData]}
-          onChange={handleChange}
-        />
-      ))}
+      <InputForm
+        name="fullName"
+        type="text"
+        placeholder="Nombre completo"
+        errorMessage="Entre 3 y 32 carácteres y sin símbolos especiales"
+        required
+        pattern="^(?=.{4,32}$)[a-zA-Z]{4,}(?: [a-zA-Z]+){0,2}$"
+        value={formData.fullName}
+        onChange={handleChange}
+      />
+
+      <InputPhoneForm
+        name="phone"
+        placeholder="Introduce tu número"
+        required
+        value={formData.phone}
+        onChange={handlePhoneChange}
+        errorMessage="Número no válido"
+        onCountryChange={handleCountryCodeChange}
+        countryCode={formData.countryCode}
+      />
+
+      <InputForm
+        name="email"
+        type="email"
+        placeholder="Correo electrónico"
+        errorMessage="Debe ser un formato de correo electrónico válido"
+        required
+        value={formData.email}
+        onChange={handleChange}
+      />
+
+      <SecurityQuestion
+        questionOptions={questionOptions}
+        selectedQuestion={formData.secretQuestion}
+        onQuestionChange={handleQuestionChange}
+        answer={formData.secretAnswer}
+        onAnswerChange={handleChange}
+        errorMessage="Debe contener entre 3 y 50 carácteres."
+      />
+
+      <PasswordInputWithRequirements
+        passwordValue={formData.password}
+        onChange={handleChange}
+      />
+
       <Button variant="Primary">Crear Cuenta</Button>
     </form>
   );
