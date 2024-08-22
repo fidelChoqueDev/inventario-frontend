@@ -15,5 +15,5 @@ export default function ProtectedRoute({
     return <Navigate to={redirectTo} />;
   }
 
-  return children || <Outlet />;
+  return children ? children : <Outlet />;
 }

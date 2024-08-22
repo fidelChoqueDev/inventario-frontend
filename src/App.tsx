@@ -22,9 +22,9 @@ function App() {
         <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/recover" element={<RecoverPasswordPage />} />
         <Route path="/question" element={<QuestionPage />} />
-        <ProtectedRoute isAuthenticated={token !== null}>
+        <Route element={<ProtectedRoute isAuthenticated={token !== null} />}>
           <Route path="/dashboard" element={<h1>Dashboard</h1>} />
-        </ProtectedRoute>
+        </Route>
       </Routes>
     </BrowserRouter>
   );
