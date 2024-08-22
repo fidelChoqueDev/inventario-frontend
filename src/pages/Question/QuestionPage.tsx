@@ -1,16 +1,11 @@
 import "./QuestionPage.css";
 import { useState } from "react";
-import ButtonBackIcon from "../components/ButtonBackIcon/ButtonBackIcon";
-import InputForm from "../components/InputForm/InputForm";
-import Button from "../components/Button/Button";
-import HeroLogo from "../components/HeroLogo/HeroLogo";
+import { ButtonBackIcon, HeroLogo, InputForm, Button } from "../../components";
 
 function QuestionPage() {
   const [answer, setAnswer] = useState("");
   // Need to get the user security question for global state
-  const [question] = useState(
-    "¿Cúal es el nombre de tu primera mascota?"
-  );
+  const [question] = useState("¿Cúal es el nombre de tu primera mascota?");
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setAnswer(event.target.value);

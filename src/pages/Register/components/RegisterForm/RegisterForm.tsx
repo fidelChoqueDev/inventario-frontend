@@ -1,11 +1,13 @@
 import { useState } from "react";
-import InputForm from "../InputForm/InputForm.tsx";
+import {
+  InputForm,
+  Button,
+  InputPhoneForm,
+  PasswordInputWithRequirements,
+  SecurityQuestion,
+} from "../../../../components";
+import { useFetch } from "../../../../hooks/useFetch.ts";
 import "./RegisterForm.css";
-import Button from "../Button/Button.tsx";
-import SecurityQuestion from "../SecurityQuestion/SecurityQuestion.tsx";
-import InputPhoneForm from "../InputPhoneForm/InputPhoneForm.tsx";
-import { useFetch } from "../../hooks/useFetch.ts";
-import PasswordInputWithRequirements from "../PasswordInputWithRequirements/PasswordInputWithRequirements.tsx";
 
 interface IFormData {
   fullName: string;
@@ -46,7 +48,7 @@ const RegisterForm = () => {
   };
 
   const handleQuestionChange = (
-    event: React.ChangeEvent<HTMLSelectElement>
+    event: React.ChangeEvent<HTMLSelectElement>,
   ) => {
     setFormData({ ...formData, secretQuestion: event.target.value });
   };
@@ -56,7 +58,7 @@ const RegisterForm = () => {
   };
 
   const handleCountryCodeChange = (
-    event: React.ChangeEvent<HTMLSelectElement>
+    event: React.ChangeEvent<HTMLSelectElement>,
   ) => {
     setFormData({ ...formData, countryCode: event.target.value });
   };

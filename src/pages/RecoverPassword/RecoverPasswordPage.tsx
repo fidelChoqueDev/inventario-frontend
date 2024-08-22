@@ -1,8 +1,6 @@
 import "./RecoverPasswordPage.css";
 import { useState } from "react";
-import Button from "../components/Button/Button";
-import ButtonBackIcon from "../components/ButtonBackIcon/ButtonBackIcon";
-import InputForm from "../components/InputForm/InputForm";
+import { Button, ButtonBackIcon, InputForm } from "../../components";
 
 const RecoverPasswordPage = () => {
   const [email, setEmail] = useState("");
