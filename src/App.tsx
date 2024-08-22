@@ -3,9 +3,8 @@ import HomePage from "./pages/Home/HomePage";
 import Login from "./pages/Login/Login";
 import RegisterUserPage from "./pages/Register/RegisterUserPage";
 import DashboardPage from "./pages/DashboardPage";
-import RecoverPasswordPage from "./pages/RecoverPasswordPage";
+import RecoverPasswordPage from "./pages/RecoverPassword/RecoverPasswordPage";
 import QuestionPage from "./pages/QuestionPage";
-
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import { AuthContext } from "./context/AuthContext";
