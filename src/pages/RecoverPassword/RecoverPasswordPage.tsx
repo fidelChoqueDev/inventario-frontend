@@ -1,8 +1,6 @@
 import "./RecoverPasswordPage.css";
 import { useState } from "react";
-import Button from "../components/Button/Button";
-import ButtonBackIcon from "../components/ButtonBackIcon/ButtonBackIcon";
-import InputForm from "../components/InputForm/InputForm";
+import { Button, ButtonBackIcon, HeroLogo, InputForm } from "../../components";
 
 const RecoverPasswordPage = () => {
   const [email, setEmail] = useState("");
@@ -10,7 +8,7 @@ const RecoverPasswordPage = () => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const endpoint = "http://api.com/user/recovery_password";
+    const endpoint = "http:/localhost:8007/user/login/emailrecovery";
 
     try {
       const response = await fetch(endpoint, {
@@ -18,9 +16,7 @@ const RecoverPasswordPage = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          email,
-        }),
+        body: JSON.stringify(email),
       });
 
       if (!response.ok) {
@@ -39,14 +35,15 @@ const RecoverPasswordPage = () => {
   };
 
   return (
-    <main>
+    <main className="recover">
       <ButtonBackIcon goTo="/login" />
-      <img src="/clean-box.png" alt="Box" />
 
-      <div>
+      <HeroLogo />
+
+      <header>
         <h2>Recuperación de contraseña</h2>
         <h3>Ingresa tu correo para recuperar tu contraseña.</h3>
-      </div>
+      </header>
 
       <form onSubmit={handleSubmit}>
         <InputForm
@@ -56,7 +53,7 @@ const RecoverPasswordPage = () => {
           name="email"
           errorMessage="Debe ser un formato de email válido."
           required
-          handleChange={handleChange}
+          onChange={handleChange}
         />
 
         <Button variant="Primary">Recuperar contraseña</Button>

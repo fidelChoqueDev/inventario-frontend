@@ -1,4 +1,7 @@
 .c-btn-back-icon {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,7 +17,7 @@
   background-color: var(--clr-primary);
 }
 .c-btn-back-icon:active {
-  background-color: var(--clr-seconday);
+  background-color: var(--clr-secondary);
   border-color: var(--clr-seconday);
 }
 .c-btn-back-icon:active svg path {

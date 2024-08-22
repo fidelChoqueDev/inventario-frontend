@@ -1,5 +1,6 @@
 .c-custom-link {
   color: var(--clr-primary);
+  font-weight: bold;
 
   &:hover {
     color: var(--clr-primary-variant);

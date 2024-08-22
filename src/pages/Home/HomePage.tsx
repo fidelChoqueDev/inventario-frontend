@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "./HomePage.css";
-import HeroLogo from "../components/HeroLogo/HeroLogo";
+import { HeroLogo } from "../../components";
 
 const HomePage = () => {
   return (

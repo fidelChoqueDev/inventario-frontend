@@ -3,5 +3,13 @@
 }
 
 .svg-arrow-left path {
-  fill: var(--clr-secondary);
+  fill: var(--clr-primary);
+}
+
+.svg-verification path {
+  fill: var(--clr-success);
+}
+
+.svg-logo path {
+  fill: var(--clr-primary);
 }

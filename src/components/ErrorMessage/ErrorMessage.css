@@ -3,7 +3,11 @@
   font-weight: 700;
   color: var(--clr-critical);
   font-size: 0.875rem;
-  line-height: 0;
   margin: 0;
-  text-align: initial;
+}
+.c-error-message--fs-normal {
+  font-size: 1rem;
+}
+.visible {
+  visibility: visible;
 }
