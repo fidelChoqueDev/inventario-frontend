@@ -2,7 +2,7 @@
 import HomePage from "./pages/Home/HomePage";
 import Login from "./pages/Login/Login";
 import RegisterUserPage from "./pages/Register/RegisterUserPage";
-import DashboardPage from "./pages/DashboardPage";
+import DashboardPage from "./pages/Dashboard/DashboardPage";
 import RecoverPasswordPage from "./pages/RecoverPassword/RecoverPasswordPage";
 import QuestionPage from "./pages/Question/QuestionPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
