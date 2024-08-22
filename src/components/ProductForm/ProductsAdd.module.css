@@ -1,12 +1,12 @@
-img{
+.imgProduct{
     width: 14rem;
     margin-left: auto;
     margin-right: auto;
 }
-form{
+.formProduct{
     margin: 15px;
 }
-button{
+.buttonProduct{
     width: 7rem;
 }
 
