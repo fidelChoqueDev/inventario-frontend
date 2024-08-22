@@ -2,7 +2,7 @@ export interface addProduct {
     code: string,
     name: string,
     supplier: string,
-    UnitPrice: string,
+    unitPrice: string,
     image:string,
     description: string,
     category: string,

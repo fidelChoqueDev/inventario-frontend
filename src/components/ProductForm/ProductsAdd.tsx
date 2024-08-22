@@ -8,7 +8,7 @@ const ProductsAdd = () => {
     code: '',
     name: '',
     supplier: '',
-    UnitPrice: '',
+    unitPrice: '',
     image:'',
     description: '',
     category: '',
@@ -33,7 +33,7 @@ const ProductsAdd = () => {
       body:JSON.stringify({
         name: formData.name,
         description: formData.description,
-        UnitPrice: formData.UnitPrice,
+        unitPrice: formData.unitPrice,
         suppelier: formData.supplier,
         image: formData.image,
         category: formData.category,
@@ -54,10 +54,10 @@ const ProductsAdd = () => {
     <>
       <div className={style.conteiner}>
         <img src={logo} alt="Company logo" />
-        <h1 className={style.title}>New product entry</h1>
+        <h1 className={style.title}>Registro de nuevo producto</h1>
         <form onSubmit={handleSubmit}>
           <div>
-            <label htmlFor="name">Name: </label>
+            <label htmlFor="name">Nombre: </label>
             <input 
               type="text" 
               name="name" 
@@ -67,59 +67,59 @@ const ProductsAdd = () => {
               required placeholder="ej: El Padrino, El testamento Maya" />
           </div>
           <div>
-            <label htmlFor="name">Description: </label>
+            <label htmlFor="name">Descripcion: </label>
             <input 
               type="text" 
               name="description" 
               id="description" 
               onChange={handleChangeInput} 
               value={formData.description} 
-              placeholder="Product descripcion" />
+              placeholder="Descripcion del producto" />
           </div>
           <div>
-            <label htmlFor="name">Supplier: </label>
+            <label htmlFor="name">Proveedor: </label>
             <input 
               type="text" 
               name="supplier" 
               id="suplier" 
-              placeholder="supplier's name" 
+              placeholder="Nombre del proveedor" 
               onChange={handleChangeInput} 
               value={formData.supplier}  />
           </div>
           <div>
-            <label htmlFor="name">Unit price: </label>
+            <label htmlFor="name">Precio por unidad: </label>
             <input 
               type="text" 
-              name="UnitPrice" 
-              id="UnitPrice" 
-              placeholder="Price of the product" 
+              name="unitPrice" 
+              id="unitPrice" 
+              placeholder="Precio del producto" 
               onChange={handleChangeInput} 
-              value={formData.UnitPrice}  />
+              value={formData.unitPrice}  />
           </div>
           <div>
-            <label htmlFor="name">Category: </label>
+            <label htmlFor="name">Categoria: </label>
             <input 
               type="text" 
               name="category" 
               id="category" 
-              placeholder="Category that corresponds to the product" 
+              placeholder="Categoria al que corresponde el producto" 
               onChange={handleChangeInput} 
               value={formData.category}  />
           </div>
           <div>
-            <label htmlFor="name">Image: </label>
+            <label htmlFor="name">Imagen: </label>
             <input 
               type="file" 
               name="image" 
               id="image" 
-              placeholder="Product photo" 
+              placeholder="Foto y/o imagen del producto" 
               onChange={handleChangeInput} 
               value={formData.image}  />
           </div>
 
           <div className={style.conteinerButton}>
-            <button type="reset">cancel</button>
-            <button type="submit">Save</button>
+            <button type="reset">Cancelar</button>
+            <button type="submit">Añadir</button>
           </div>
         </form>
       </div>
