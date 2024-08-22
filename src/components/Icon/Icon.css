@@ -7,7 +7,7 @@
 }
 
 .svg-verification path {
-  fill: var(--clr-success);
+  fill: var(--clr-background);
 }
 
 .svg-logo path {
