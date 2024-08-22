@@ -1,14 +1,16 @@
 // import "./App.css";
-import HomePage from "./pages/Home/HomePage";
-import Login from "./pages/Login/Login";
-import RegisterUserPage from "./pages/Register/RegisterUserPage";
-import DashboardPage from "./pages/Dashboard/DashboardPage";
-import RecoverPasswordPage from "./pages/RecoverPassword/RecoverPasswordPage";
-import QuestionPage from "./pages/Question/QuestionPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
-import { AuthContext } from "./context/AuthContext";
 import { useContext } from "react";
+import {
+  HomePage,
+  Login,
+  RegisterUserPage,
+  DashboardPage,
+  RecoverPasswordPage,
+  QuestionPage,
+} from "./pages";
+import { ProtectedRoute } from "./components";
+import { AuthContext } from "./context/AuthContext";
 
 function App() {
   const { token } = useContext(AuthContext);
