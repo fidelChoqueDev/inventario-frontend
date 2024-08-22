@@ -9,6 +9,7 @@ import DashboardPage from "./pages/DashboardPage";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RecoverPasswordPage from "./pages/RecoverPasswordPage";
 import QuestionPage from "./pages/QuestionPage";
+import NewPasswordPage from "./pages/NewPasswordPage";
 import { ProductPage } from './pages/ProductPage';
 
 const router = createBrowserRouter([
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
   {
     path: "/question",
     element: <QuestionPage />,
+  },
+  {
+    path: "/password",
+    element: <NewPasswordPage />,
   },
 ]);
 
