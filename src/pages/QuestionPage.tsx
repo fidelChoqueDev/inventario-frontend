@@ -1,10 +1,16 @@
+import "./QuestionPage.css";
 import { useState } from "react";
 import ButtonBackIcon from "../components/ButtonBackIcon/ButtonBackIcon";
 import InputForm from "../components/InputForm/InputForm";
 import Button from "../components/Button/Button";
+import HeroLogo from "../components/HeroLogo/HeroLogo";
 
 function QuestionPage() {
   const [answer, setAnswer] = useState("");
+  // Need to get the user security question for global state
+  const [question] = useState(
+    "¿Cúal es el nombre de tu primera mascota?"
+  );
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setAnswer(event.target.value);
@@ -22,7 +28,7 @@ function QuestionPage() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-           answer 
+          answer,
         }),
       });
 
@@ -38,25 +44,26 @@ function QuestionPage() {
   };
 
   return (
-    <main>
-      <ButtonBackIcon goto="/" />
-      <img src="/public/clean-box.png" alt="Box" />
+    <main className="question">
+      <ButtonBackIcon goTo="/" />
 
-      <div>
+      <HeroLogo />
+
+      <header>
         <h2>Pregunta de recuperación</h2>
-        <h3>¿Cúal es el nombre de tu primera mascota?</h3>
-      </div>
+        <h3>{question}</h3>
+      </header>
 
       <form onSubmit={handleSubmit}>
         <InputForm
-          value={`${answer}`}
+          value={answer}
           placeholder="Respuesta"
           type="text"
           name="response"
           errorMessage="Debe contener entre 3 y 16 carácteres y no puede contener ningún carácter especial."
           pattern="^[a-zA-Z]{4,}(?: [a-zA-Z]+){0,2}$"
           required
-          handleChange={handleChange}
+          onChange={handleChange}
         />
         <Button variant="Primary">Verificar respuesta</Button>
       </form>
