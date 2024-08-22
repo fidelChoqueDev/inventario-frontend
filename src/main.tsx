@@ -1,38 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import HomePage from "./pages/HomePage";
-import Login from "./pages/Login/Login";
-import RegisterUserPage from "./pages/RegisterUserPage";
-import DashboardPage from "./pages/DashboardPage";
-
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import RecoverPasswordPage from "./pages/RecoverPasswordPage";
-import QuestionPage from "./pages/QuestionPage";
-
-const router = createBrowserRouter([
-  { path: "/", element: <HomePage /> },
-  { path: "/login", element: <Login /> },
-  {
-    path: "/register",
-    element: <RegisterUserPage />,
-  },
-  {
-    path: "/dashboard",
-    element: <DashboardPage />,
-  },
-  {
-    path: "/recover",
-    element: <RecoverPasswordPage />,
-  },
-  {
-    path: "/question",
-    element: <QuestionPage />,
-  },
-]);
+import { AuthContextProvider } from "./context/AuthContext";
+import App from "./App";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthContextProvider>
+      <App></App>
+    </AuthContextProvider>
   </React.StrictMode>,
 );
