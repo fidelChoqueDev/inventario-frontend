@@ -96,7 +96,7 @@ export default function FormLogin() {
           visibility={error ? true : false}
           variant="FontSizeNormal"
         >
-          {error?.toString() ?? "Error"}
+          {error && "El correo o la contraseña es incorrecto"}
         </ErrorMessage>
         <Button variant="Primary">Iniciar sesión</Button>
       </form>
