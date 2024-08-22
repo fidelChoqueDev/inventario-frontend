@@ -56,7 +56,7 @@ const RecoverPasswordPage = () => {
           name="email"
           errorMessage="Debe ser un formato de email válido."
           required
-          handleChange={handleChange}
+          onChange={handleChange}
         />
 
         <Button variant="Primary">Recuperar contraseña</Button>
