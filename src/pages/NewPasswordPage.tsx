@@ -1,13 +1,15 @@
+import './NewPasswordPage.css'
 import { useState } from "react";
+import { useFetch } from "../hooks/useFetch";
 import Button from "../components/Button/Button";
 import ButtonBackIcon from "../components/ButtonBackIcon/ButtonBackIcon";
 import PasswordInputWithRequirements from "../components/PasswordInputWithRequirements/PasswordInputWithRequirements";
-import { useFetch } from "../hooks/useFetch";
+import HeroLogo from "../components/HeroLogo/HeroLogo";
 
 const NewPasswordPage = () => {
   const [password, setPassword] = useState("");
 
-  const url = "http://localhost:8007/user/new";
+  const url = "http://localhost:8007/user/rpassword/reset";
   const { submit } = useFetch(url);
 
   const handlePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,20 +21,22 @@ const NewPasswordPage = () => {
 
     await submit({
       body: {
+        // correo electrónico del usuario
         password,
       },
     });
   };
 
   return (
-    <main>
+    <main className="reset-password">
       <ButtonBackIcon goTo="/login" />
-      <img src="/clean-box.png" alt="Box" />
 
-      <div>
+      <HeroLogo />
+
+      <header className='reset-password__header'>
         <h2>Restablecer contraseña</h2>
         <h3>Ingresa la nueva contraseña</h3>
-      </div>
+      </header>
 
       <form onSubmit={handleSubmit}>
         <PasswordInputWithRequirements
