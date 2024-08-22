@@ -1,7 +1,6 @@
 import "./RegisterUserPage.css";
-import ButtonBackIcon from "../components/ButtonBackIcon/ButtonBackIcon.tsx";
-import HeroLogo from "../components/HeroLogo/HeroLogo.tsx";
-import RegisterForm from "../components/RegisterForm/RegisterForm.tsx";
+import { ButtonBackIcon, HeroLogo } from "../../components/index.ts";
+import RegisterForm from "./components/RegisterForm/RegisterForm.tsx";
 
 const CreateUserPage = () => {
   return (
