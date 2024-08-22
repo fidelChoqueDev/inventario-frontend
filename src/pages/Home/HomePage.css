@@ -30,35 +30,45 @@
   gap: 1.5rem;
 
   & .link {
+    width: 100%;
+    display: block;
+    padding-block: 1rem;
     border-radius: 0.25rem;
     text-transform: uppercase;
-    width: 100%;
-    padding: 0.75rem 0.5rem;
 
     &.link--light {
+      background-color: var(--clr-background);
       border: 1px solid var(--clr-primary);
-      color: #1a1a1a;
+      color: var(--clr-secondary);
+      cursor: pointer;
 
       &:hover {
-        background-color: var(--clr-primary-variant);
-        color: var(--clr-background);
+        box-shadow: inset 0 0 0 1px var(--clr-primary);
       }
-
       &:active {
         background-color: var(--clr-primary);
+        color: var(--clr-background);
+      }
+      &:disabled {
+        background-color: var(--clr-secondary-70);
+        cursor: not-allowed;
       }
     }
 
     &.link--dark {
       background-color: var(--clr-primary);
-      color: #ffffff;
+      color: var(--clr-background);
+      cursor: pointer;
 
       &:hover {
         background-color: var(--clr-primary-variant);
       }
-
       &:active {
-        background-color: var(--clr-primary);
+        background-color: var(--clr-secondary);
+      }
+      &:disabled {
+        background-color: var(--clr-secondary-70);
+        cursor: not-allowed;
       }
     }
   }
