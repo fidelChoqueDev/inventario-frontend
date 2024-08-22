@@ -52,7 +52,7 @@ const ProductsAdd = () => {
   
   return (
     <>
-      <div className={style.conteiner}>
+      <div className={style.container}>
         <img src={logo} alt="Company logo" />
         <h1 className={style.title}>Registro de nuevo producto</h1>
         <form onSubmit={handleSubmit}>
@@ -117,7 +117,7 @@ const ProductsAdd = () => {
               value={formData.image}  />
           </div>
 
-          <div className={style.conteinerButton}>
+          <div className={style.containerButton}>
             <button type="reset">Cancelar</button>
             <button type="submit">Añadir</button>
           </div>

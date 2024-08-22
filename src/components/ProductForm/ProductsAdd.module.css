@@ -10,12 +10,12 @@ button{
     width: 7rem;
 }
 
-.conteinerButton{
+.containerButton{
    flex-direction: row;
    gap: 2rem;
    justify-content: center;
 }
-.conteiner {
+.container {
     background: burlywood;
 }
 .title{
