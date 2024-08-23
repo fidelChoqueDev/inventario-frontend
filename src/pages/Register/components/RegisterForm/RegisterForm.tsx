@@ -5,9 +5,13 @@ import {
   InputPhoneForm,
   PasswordInputWithRequirements,
   SecurityQuestion,
+  Popup,
 } from "../../../../components";
 import { useFetch } from "../../../../hooks/useFetch.ts";
 import "./RegisterForm.css";
+import usePopup from "../../../../hooks/usePopup.ts";
+import { useNavigate } from "react-router-dom";
+import Modal from "../../../../components/Modal/Modal.tsx";
 
 interface IFormData {
   fullName: string;
@@ -39,16 +43,19 @@ const RegisterForm = () => {
     password: "",
   });
 
-  const url = "http://localhost:8007/user/add";
+  const navigate = useNavigate();
 
-  const { submit } = useFetch(url);
+  const url = "http://localhost:8007/user/add";
+  const { submit, error } = useFetch(url);
+
+  const [isOpen, openPopup] = usePopup(true, 3000, () => navigate("/login"));
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
   const handleQuestionChange = (
-    event: React.ChangeEvent<HTMLSelectElement>,
+    event: React.ChangeEvent<HTMLSelectElement>
   ) => {
     setFormData({ ...formData, secretQuestion: event.target.value });
   };
@@ -58,7 +65,7 @@ const RegisterForm = () => {
   };
 
   const handleCountryCodeChange = (
-    event: React.ChangeEvent<HTMLSelectElement>,
+    event: React.ChangeEvent<HTMLSelectElement>
   ) => {
     setFormData({ ...formData, countryCode: event.target.value });
   };
@@ -77,58 +84,68 @@ const RegisterForm = () => {
         role: "user",
       },
     });
+
+    if (!error) {
+      openPopup();
+    }
   };
 
   return (
-    <form className="c-form-register" onSubmit={handleSubmit}>
-      <InputForm
-        name="fullName"
-        type="text"
-        placeholder="Nombre completo"
-        errorMessage="Entre 3 y 32 carácteres y sin símbolos especiales"
-        required
-        pattern="^(?=.{4,32}$)[a-zA-Z]{4,}(?: [a-zA-Z]+){0,2}$"
-        value={formData.fullName}
-        onChange={handleChange}
-      />
+    <>
+      <form className="c-form-register" onSubmit={handleSubmit}>
+        <InputForm
+          name="fullName"
+          type="text"
+          placeholder="Nombre completo"
+          errorMessage="Entre 3 y 32 carácteres y sin símbolos especiales"
+          required
+          pattern="^(?=.{4,32}$)[a-zA-Z]{4,}(?: [a-zA-Z]+){0,2}$"
+          value={formData.fullName}
+          onChange={handleChange}
+        />
 
-      <InputPhoneForm
-        name="phone"
-        placeholder="Introduce tu número"
-        required
-        value={formData.phone}
-        onChange={handlePhoneChange}
-        errorMessage="Número no válido"
-        onCountryChange={handleCountryCodeChange}
-        countryCode={formData.countryCode}
-      />
+        <InputPhoneForm
+          name="phone"
+          placeholder="Introduce tu número"
+          required
+          value={formData.phone}
+          onChange={handlePhoneChange}
+          errorMessage="Número no válido"
+          onCountryChange={handleCountryCodeChange}
+          countryCode={formData.countryCode}
+        />
 
-      <InputForm
-        name="email"
-        type="email"
-        placeholder="Correo electrónico"
-        errorMessage="Debe ser un formato de correo electrónico válido"
-        required
-        value={formData.email}
-        onChange={handleChange}
-      />
+        <InputForm
+          name="email"
+          type="email"
+          placeholder="Correo electrónico"
+          errorMessage="Debe ser un formato de correo electrónico válido"
+          required
+          value={formData.email}
+          onChange={handleChange}
+        />
 
-      <SecurityQuestion
-        questionOptions={questionOptions}
-        selectedQuestion={formData.secretQuestion}
-        onQuestionChange={handleQuestionChange}
-        answer={formData.secretAnswer}
-        onAnswerChange={handleChange}
-        errorMessage="Debe contener entre 3 y 50 carácteres."
-      />
+        <SecurityQuestion
+          questionOptions={questionOptions}
+          selectedQuestion={formData.secretQuestion}
+          onQuestionChange={handleQuestionChange}
+          answer={formData.secretAnswer}
+          onAnswerChange={handleChange}
+          errorMessage="Debe contener entre 3 y 50 carácteres."
+        />
 
-      <PasswordInputWithRequirements
-        passwordValue={formData.password}
-        onChange={handleChange}
-      />
+        <PasswordInputWithRequirements
+          passwordValue={formData.password}
+          onChange={handleChange}
+        />
 
-      <Button variant="Primary">Crear Cuenta</Button>
-    </form>
+        <Button variant="Primary">Crear Cuenta</Button>
+
+        <Popup isOpen={isOpen}>
+          <Modal message="Usuario registrado correctamente" />
+        </Popup>
+      </form>
+    </>
   );
 };
 
