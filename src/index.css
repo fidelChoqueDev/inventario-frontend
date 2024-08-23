@@ -20,6 +20,29 @@
   --border-sm: 0.375rem;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --clr-background: #312e2a;
+    --clr-primary: #e3ad77;
+    --clr-primary-variant: #e9bf95;
+    --clr-secondary: #fcfaf8;
+    --clr-secondary-70: #fcfaf8b3;
+    --clr-secondary-60: #fcfaf899;
+    --clr-secondary-30: #fcfaf84d;
+    --clr-secondary-10: #fcfaf81a;
+    --clr-critical: #ff9595;
+    --clr-critical-secondary: #ff777a;
+    --clr-warning: #ffe677;
+    --clr-success: #b6f08b;
+    --clr-soft: #808080;
+    --clr-text: var(--clr-secondary);
+    --clr-main-bg: var(--clr-background);
+
+    --border-xs: 0.25rem;
+    --border-sm: 0.375rem;
+  }
+}
+
 @font-face {
   font-family: "BalsamiqSans";
   src: local("BalsamiqSans-Regular"),
@@ -34,6 +57,7 @@
 /* My minimal reset */
 html {
   box-sizing: border-box;
+  color: var(--clr-text);
 }
 
 *,
@@ -73,6 +97,7 @@ button,
 textarea,
 select {
   font: inherit;
+  color: var(--clr-text);
 }
 
 input {
