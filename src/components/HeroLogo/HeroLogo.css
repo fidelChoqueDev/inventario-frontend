@@ -2,8 +2,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-block: 2rem;
 
-  & .logo-icon {
+  & .svg-logo {
     width: 15rem;
   }
 }
+
+.svg-logo path {
+  fill: var(--clr-primary);
+}
+
