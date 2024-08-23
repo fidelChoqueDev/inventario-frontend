@@ -1,4 +1,4 @@
 export interface IErrorMessages {
-  passwordValue: string;
-  passwordConfirmation: string;
+  passwordValue: string | null;
+  passwordConfirmation: string | null;
 }

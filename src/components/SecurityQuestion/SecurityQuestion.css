@@ -1,8 +1,7 @@
 .security-question-container {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  margin-bottom: 1rem;
+  gap: 1.8rem;
 }
 
 .security-question-dropdown {
@@ -17,6 +16,7 @@
     url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path fill="none" stroke="black" d="M0 0l2 2 2-2"/></svg>')
     no-repeat right 16px center;
   background-size: 12px;
+  line-height: 1.2rem;
 }
 
 .security-question-input input {
