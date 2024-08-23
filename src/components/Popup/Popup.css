@@ -11,12 +11,34 @@
   display: none;
 }
 
-.container {
+.modal__container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  padding: 2rem 1rem;
-  max-width: max(12rem, 90%);
   background-color: white;
-  border-radius: 0.5rem;
+  border-radius: var(--border-xs);
+  padding: 2rem 1rem;
+  width: calc(100dvw - 4rem);
+  max-width: 30rem;
+}
+
+.modal__box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--clr-success);
+  border-radius: var(--border-sm);
+  width: 5rem;
+  height: 5rem;
+
+  & .modal__icon {
+    width: 2rem;
+    height: 2rem;
+  }
+}
+
+.modal__title {
+  text-align: center;
+  font-weight: 400;
 }
