@@ -1,38 +1,42 @@
 import "./QuestionPage.css";
-import { useState } from "react";
+import { useContext } from "react";
 import { ButtonBackIcon, HeroLogo, InputForm, Button } from "../../components";
+import { RecoveryPasswordContext } from "../../context/RecoveryPasswordContext";
+import { useNavigate } from "react-router-dom";
+
+const endpoint = "http://localhost:8007/user/security/answer";
 
 function QuestionPage() {
-  const [answer, setAnswer] = useState("");
-  // Need to get the user security question for global state
-  const [question] = useState("¿Cúal es el nombre de tu primera mascota?");
+  const { valuesBySteps, updateValuesBySteps } = useContext(
+    RecoveryPasswordContext,
+  );
+  const navigate = useNavigate();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setAnswer(event.target.value);
+    updateValuesBySteps("answer", event.target.value);
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const endpoint = "http://api.com/user/recovery_password";
+    const paramsString = new URLSearchParams({
+      email: valuesBySteps.email,
+      answer: valuesBySteps.answer,
+    });
+
+    const url = `${endpoint}?${paramsString.toString()}`;
 
     try {
-      const response = await fetch(endpoint, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          answer,
-        }),
-      });
+      const response = await fetch(url);
 
       if (!response.ok) {
         throw new Error("Error al enviar la respuesta");
       }
-
       const data = await response.json();
       console.log("Respuesta correcta", data);
+      if (data) {
+        navigate("/newpassword");
+      }
     } catch (error) {
       console.error("Error", error);
     }
@@ -46,12 +50,12 @@ function QuestionPage() {
 
       <header>
         <h2>Pregunta de recuperación</h2>
-        <h3>{question}</h3>
+        <h3>{valuesBySteps.question}</h3>
       </header>
 
       <form onSubmit={handleSubmit}>
         <InputForm
-          value={answer}
+          value={valuesBySteps.answer}
           placeholder="Respuesta"
           type="text"
           name="response"

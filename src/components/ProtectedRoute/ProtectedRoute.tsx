@@ -14,6 +14,7 @@ export default function ProtectedRoute({
   if (!isAuthenticated) {
     return <Navigate to={redirectTo} />;
   }
+  console.log("ingreso");
 
   return children ? children : <Outlet />;
 }

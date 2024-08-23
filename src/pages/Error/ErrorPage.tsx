@@ -1,5 +1,5 @@
 import "./ErrorPage.module.css";
-import { ButtonBackIcon, HeroLogo } from "../../components";
+import { ButtonBackIcon } from "../../components";
 
 const ErrorPage = () => {
   return (
