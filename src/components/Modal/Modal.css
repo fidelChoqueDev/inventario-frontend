@@ -1,14 +1,13 @@
-.popup {
+.modal {
+  position: fixed;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: fixed;
+  z-index: 1000;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.74);
-}
-
-.popup.close {
-  display: none;
+  background-color: rgba(0, 0, 0, 0.7);
+  pointer-events: none;
 }
 
 .modal__container {

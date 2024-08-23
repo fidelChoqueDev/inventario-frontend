@@ -14,6 +14,7 @@ import { useFetch } from "../../../../hooks/useFetch.ts";
 import "./RegisterForm.css";
 import usePopup from "../../../../hooks/usePopup.ts";
 import { useNavigate } from "react-router-dom";
+import Modal from "../../../../components/Modal/Modal.tsx";
 
 interface IFormData {
   fullName: string;
@@ -46,9 +47,10 @@ const RegisterForm = () => {
   });
 
   const navigate = useNavigate();
+
   const url = "http://localhost:8007/user/add";
   const [isOpen, openPopup] = usePopup(true, 4000, () => navigate("/login"));
-  const { submit, data } = useFetch(url);
+  const { submit, error, data } = useFetch(url);
   const [terms, setTerms] = useState(false);
   const [errorTerms, setErrorTerms] = useState(false);
   const onClick = () => {
@@ -63,7 +65,7 @@ const RegisterForm = () => {
   };
 
   const handleQuestionChange = (
-    event: React.ChangeEvent<HTMLSelectElement>,
+    event: React.ChangeEvent<HTMLSelectElement>
   ) => {
     setFormData({ ...formData, secretQuestion: event.target.value });
   };
@@ -73,7 +75,7 @@ const RegisterForm = () => {
   };
 
   const handleCountryCodeChange = (
-    event: React.ChangeEvent<HTMLSelectElement>,
+    event: React.ChangeEvent<HTMLSelectElement>
   ) => {
     setFormData({ ...formData, countryCode: event.target.value });
   };
@@ -92,6 +94,10 @@ const RegisterForm = () => {
         role: "user",
       },
     });
+
+    if (!error) {
+      openPopup();
+    }
   };
 
   useEffect(() => {
@@ -102,7 +108,6 @@ const RegisterForm = () => {
 
   return (
     <>
-      <Popup isOpen={isOpen}>Registro exitoso, ya puedes iniciar sesión.</Popup>
       <form className="c-form-register" onSubmit={handleSubmit}>
         <InputForm
           name="fullName"
@@ -149,6 +154,7 @@ const RegisterForm = () => {
           passwordValue={formData.password}
           onChange={handleChange}
         />
+
         <div className="c-form-register__terms">
           <Checkbox
             clickable={true}
@@ -174,6 +180,10 @@ const RegisterForm = () => {
           Crear Cuenta
         </Button>
       </form>
+
+      <Popup isOpen={isOpen}>
+        <Modal message="Usuario registrado correctamente" />
+      </Popup>
     </>
   );
 };
