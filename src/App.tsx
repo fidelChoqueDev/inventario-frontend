@@ -8,6 +8,7 @@ import {
   DashboardPage,
   RecoverPasswordPage,
   QuestionPage,
+  ErrorPage
 } from "./pages";
 import { ProtectedRoute } from "./components";
 import { AuthContext } from "./context/AuthContext";
@@ -26,6 +27,7 @@ function App() {
         <Route element={<ProtectedRoute isAuthenticated={token !== null} />}>
           <Route path="/dashboard" element={<h1>Dashboard</h1>} />
         </Route>
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>
   );
