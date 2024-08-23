@@ -1,6 +1,5 @@
 import "./SecurityQuestion.css";
-import ErrorMessage from "../ErrorMessage/ErrorMessage";
-import { useState } from "react";
+import InputForm from "../InputForm/InputForm";
 
 interface Props {
   questionOptions: string[];
@@ -21,12 +20,6 @@ const SecurityQuestion = (props: Props) => {
     errorMessage,
   } = props;
 
-  const [focused, setFocused] = useState<boolean>(false);
-
-  const handleFocus = () => {
-    setFocused(true);
-  };
-
   return (
     <div className="security-question-container">
       <div className="security-question-select">
@@ -44,18 +37,16 @@ const SecurityQuestion = (props: Props) => {
         </select>
         <div className="security-question-arrow"></div>
       </div>
-      <div className="security-question-input">
-        <input
-          name="secretAnswer"
-          type="text"
-          placeholder="Introduce tu respuesta"
-          value={answer}
-          onChange={onAnswerChange}
-          onFocus={handleFocus}
-          data-focused={focused.toString()}
-        />
-        <ErrorMessage>{errorMessage}</ErrorMessage>
-      </div>
+      <InputForm
+        errorMessage={errorMessage}
+        name="secretAnswer"
+        type="text"
+        placeholder="Introduce tu respuesta"
+        value={answer}
+        onChange={onAnswerChange}
+        pattern="^.+$"
+        required={true}
+      />
     </div>
   );
 };
