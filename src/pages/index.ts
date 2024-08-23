@@ -5,6 +5,7 @@ import { default as NewPasswordPage } from "./NewPassword/NewPasswordPage";
 import { default as QuestionPage } from "./Question/QuestionPage";
 import { default as RecoverPasswordPage } from "./RecoverPassword/RecoverPasswordPage";
 import { default as RegisterUserPage } from "./Register/RegisterUserPage";
+import { default as ErrorPage } from "./Error/ErrorPage";
 
 export {
   DashboardPage,
@@ -14,4 +15,5 @@ export {
   QuestionPage,
   RecoverPasswordPage,
   RegisterUserPage,
+  ErrorPage
 };
