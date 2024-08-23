@@ -8,9 +8,12 @@ import {
   Checkbox,
   CustomLink,
   ErrorMessage,
+  Popup,
 } from "../../../../components";
 import { useFetch } from "../../../../hooks/useFetch.ts";
 import "./RegisterForm.css";
+import usePopup from "../../../../hooks/usePopup.ts";
+import { useNavigate } from "react-router-dom";
 
 interface IFormData {
   fullName: string;
@@ -42,9 +45,10 @@ const RegisterForm = () => {
     password: "",
   });
 
+  const navigate = useNavigate();
   const url = "http://localhost:8007/user/add";
-
-  const { submit } = useFetch(url);
+  const [isOpen, openPopup] = usePopup(true, 3000, () => navigate("/login"));
+  const { submit, data } = useFetch(url);
   const [terms, setTerms] = useState(false);
   const [errorTerms, setErrorTerms] = useState(false);
   const onClick = () => {
@@ -90,79 +94,87 @@ const RegisterForm = () => {
     });
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    if (data) {
+      openPopup();
+    }
+  }, [data, openPopup]);
 
   return (
-    <form className="c-form-register" onSubmit={handleSubmit}>
-      <InputForm
-        name="fullName"
-        type="text"
-        placeholder="Nombre completo"
-        errorMessage="Entre 3 y 32 carácteres y sin símbolos especiales"
-        required
-        pattern="^(?=.{4,32}$)[a-zA-Z]{4,}(?: [a-zA-Z]+){0,2}$"
-        value={formData.fullName}
-        onChange={handleChange}
-      />
-
-      <InputPhoneForm
-        name="phone"
-        placeholder="Introduce tu número"
-        required
-        value={formData.phone}
-        onChange={handlePhoneChange}
-        errorMessage="Número no válido"
-        onCountryChange={handleCountryCodeChange}
-        countryCode={formData.countryCode}
-      />
-
-      <InputForm
-        name="email"
-        type="email"
-        placeholder="Correo electrónico"
-        errorMessage="Debe ser un formato de correo electrónico válido"
-        required
-        value={formData.email}
-        onChange={handleChange}
-      />
-
-      <SecurityQuestion
-        questionOptions={questionOptions}
-        selectedQuestion={formData.secretQuestion}
-        onQuestionChange={handleQuestionChange}
-        answer={formData.secretAnswer}
-        onAnswerChange={handleChange}
-        errorMessage="Debe contener entre 3 y 50 carácteres."
-      />
-
-      <PasswordInputWithRequirements
-        passwordValue={formData.password}
-        onChange={handleChange}
-      />
-      <div className="c-form-register__terms">
-        <Checkbox
-          clickable={true}
-          content={
-            <>
-              {" "}
-              Acepto los <CustomLink to="#">Términos y Condiciones</CustomLink>,
-              la <CustomLink to="#">Política de Privacidad</CustomLink> y
-              autorizo el tratamiento de mis datos personales.
-            </>
-          }
-          name="terms"
-          isChecked={terms}
-          onChange={() => setTerms(!terms)}
-          required={true}
+    <>
+      <Popup isOpen={isOpen}>Registro exitoso, ya puedes iniciar sesión.</Popup>
+      <form className="c-form-register" onSubmit={handleSubmit}>
+        <InputForm
+          name="fullName"
+          type="text"
+          placeholder="Nombre completo"
+          errorMessage="Entre 3 y 32 carácteres y sin símbolos especiales"
+          required
+          pattern="^(?=.{4,32}$)[a-zA-Z]{4,}(?: [a-zA-Z]+){0,2}$"
+          value={formData.fullName}
+          onChange={handleChange}
         />
-        <ErrorMessage visibility={errorTerms && !terms}>
-          Debes aceptar los términos y condiciones
-        </ErrorMessage>
-      </div>
-      <Button onClick={onClick} variant="Primary">
-        Crear Cuenta
-      </Button>
-    </form>
+
+        <InputPhoneForm
+          name="phone"
+          placeholder="Introduce tu número"
+          required
+          value={formData.phone}
+          onChange={handlePhoneChange}
+          errorMessage="Número no válido"
+          onCountryChange={handleCountryCodeChange}
+          countryCode={formData.countryCode}
+        />
+
+        <InputForm
+          name="email"
+          type="email"
+          placeholder="Correo electrónico"
+          errorMessage="Debe ser un formato de correo electrónico válido"
+          required
+          value={formData.email}
+          onChange={handleChange}
+        />
+
+        <SecurityQuestion
+          questionOptions={questionOptions}
+          selectedQuestion={formData.secretQuestion}
+          onQuestionChange={handleQuestionChange}
+          answer={formData.secretAnswer}
+          onAnswerChange={handleChange}
+          errorMessage="Debe contener entre 3 y 50 carácteres."
+        />
+
+        <PasswordInputWithRequirements
+          passwordValue={formData.password}
+          onChange={handleChange}
+        />
+        <div className="c-form-register__terms">
+          <Checkbox
+            clickable={true}
+            content={
+              <>
+                {" "}
+                Acepto los{" "}
+                <CustomLink to="#">Términos y Condiciones</CustomLink>, la{" "}
+                <CustomLink to="#">Política de Privacidad</CustomLink> y
+                autorizo el tratamiento de mis datos personales.
+              </>
+            }
+            name="terms"
+            isChecked={terms}
+            onChange={() => setTerms(!terms)}
+            required={true}
+          />
+          <ErrorMessage visibility={errorTerms && !terms}>
+            Debes aceptar los términos y condiciones
+          </ErrorMessage>
+        </div>
+        <Button onClick={onClick} variant="Primary">
+          Crear Cuenta
+        </Button>
+      </form>
+    </>
   );
 };
 
