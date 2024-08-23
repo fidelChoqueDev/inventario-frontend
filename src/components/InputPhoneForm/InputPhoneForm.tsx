@@ -23,7 +23,7 @@ const InputPhoneForm = (props: Props) => {
   };
 
   return (
-    <>
+    <div className="field">
       <div className="phone-input-container">
         <select
           value={countryCode}
@@ -45,7 +45,7 @@ const InputPhoneForm = (props: Props) => {
         />
       </div>
       <ErrorMessage>{errorMessage}</ErrorMessage>
-    </>
+    </div>
   );
 };
 

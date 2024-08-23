@@ -9,8 +9,6 @@ import {
 } from "../../../../components";
 
 import { useFetch } from "../../../../hooks/useFetch";
-import Popup from "../../../../components/Popup/Popup";
-import usePopup from "../../../../hooks/usePopup";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../../context/AuthContext";
 
@@ -37,10 +35,6 @@ export default function FormLogin() {
   const { error, data, submit } = useFetch(url);
   const [userLogin, setUserLogin] = useState<IUserLogin>(initialUserLogin);
   const { updateToken } = useContext(AuthContext);
-  // Custon Hooks
-  const [isOpen, openPopup] = usePopup(true, 3000, () =>
-    navigate("/dashboard"),
-  );
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserLogin({ ...userLogin, [e.target.name]: e.target.value });
@@ -60,13 +54,12 @@ export default function FormLogin() {
     if (data) {
       const { access_token } = data as IDataResponse;
       updateToken(access_token);
-      openPopup();
+      navigate("/dashboard");
     }
-  }, [data, updateToken, openPopup]);
+  }, [data, updateToken, navigate]);
 
   return (
     <>
-      <Popup isOpen={isOpen}>Funciona</Popup>
       <form className="c-form-login" onSubmit={handleSubmit}>
         <div className="c-form-login__inputs">
           <InputForm

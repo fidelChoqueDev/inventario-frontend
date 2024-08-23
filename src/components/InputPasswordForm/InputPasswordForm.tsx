@@ -9,7 +9,7 @@ interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   required: boolean;
   pattern: string;
   value: string;
-  errorMessage?: string;
+  errorMessage?: string | null;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -40,7 +40,7 @@ export default function InputPasswordForm(props: Props) {
           />
         </div>
       </div>
-      <ErrorMessage>{errorMessage}</ErrorMessage>
+      <ErrorMessage>{errorMessage ?? <>&nbsp;</>}</ErrorMessage>
     </div>
   );
 }

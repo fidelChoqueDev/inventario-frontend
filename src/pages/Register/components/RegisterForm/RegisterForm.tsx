@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   InputForm,
   Button,
   InputPhoneForm,
   PasswordInputWithRequirements,
   SecurityQuestion,
+  Checkbox,
+  CustomLink,
+  ErrorMessage,
   Popup,
 } from "../../../../components";
 import { useFetch } from "../../../../hooks/useFetch.ts";
@@ -35,7 +38,7 @@ const questionOptions = [
 const RegisterForm = () => {
   const [formData, setFormData] = useState<IFormData>({
     fullName: "",
-    countryCode: "",
+    countryCode: "+1",
     phone: "",
     email: "",
     secretQuestion: "Cúal es el nombre de tu mascota?",
@@ -46,10 +49,17 @@ const RegisterForm = () => {
   const navigate = useNavigate();
 
   const url = "http://localhost:8007/user/add";
-  const { submit, error } = useFetch(url);
-
-  const [isOpen, openPopup] = usePopup(true, 3000, () => navigate("/login"));
-
+  const [isOpen, openPopup] = usePopup(true, 4000, () => navigate("/login"));
+  const { submit, error, data } = useFetch(url);
+  const [terms, setTerms] = useState(false);
+  const [errorTerms, setErrorTerms] = useState(false);
+  const onClick = () => {
+    if (!terms) {
+      setErrorTerms(true);
+    } else {
+      setErrorTerms(false);
+    }
+  };
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
@@ -89,6 +99,12 @@ const RegisterForm = () => {
       openPopup();
     }
   };
+
+  useEffect(() => {
+    if (data) {
+      openPopup();
+    }
+  }, [data, openPopup]);
 
   return (
     <>
@@ -139,12 +155,35 @@ const RegisterForm = () => {
           onChange={handleChange}
         />
 
-        <Button variant="Primary">Crear Cuenta</Button>
-
-        <Popup isOpen={isOpen}>
-          <Modal message="Usuario registrado correctamente" />
-        </Popup>
+        <div className="c-form-register__terms">
+          <Checkbox
+            clickable={true}
+            content={
+              <>
+                {" "}
+                Acepto los{" "}
+                <CustomLink to="#">Términos y Condiciones</CustomLink>, la{" "}
+                <CustomLink to="#">Política de Privacidad</CustomLink> y
+                autorizo el tratamiento de mis datos personales.
+              </>
+            }
+            name="terms"
+            isChecked={terms}
+            onChange={() => setTerms(!terms)}
+            required={true}
+          />
+          <ErrorMessage visibility={errorTerms && !terms}>
+            Debes aceptar los términos y condiciones
+          </ErrorMessage>
+        </div>
+        <Button onClick={onClick} variant="Primary">
+          Crear Cuenta
+        </Button>
       </form>
+
+      <Popup isOpen={isOpen}>
+        <Modal message="Usuario registrado correctamente" />
+      </Popup>
     </>
   );
 };

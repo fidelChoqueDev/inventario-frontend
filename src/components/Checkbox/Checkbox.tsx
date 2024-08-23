@@ -4,10 +4,11 @@ import Icon from "../Icon/Icon";
 
 interface Props {
   clickable: boolean;
-  content: string;
+  content: React.ReactNode | string;
   isChecked?: boolean;
   name: string;
   onChange?: () => void;
+  required?: boolean;
 }
 
 /**
@@ -20,7 +21,14 @@ interface Props {
  */
 
 const Checkbox = memo(
-  function Checkbox({ clickable, content, name, isChecked, onChange }: Props) {
+  function Checkbox({
+    clickable,
+    content,
+    name,
+    isChecked,
+    onChange,
+    required = false,
+  }: Props) {
     const handleChange = useMemo(() => {
       if (!clickable)
         return (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -38,6 +46,7 @@ const Checkbox = memo(
             type="checkbox"
             checked={isChecked}
             onChange={handleChange}
+            required={required}
           />
           <label
             htmlFor={name}
