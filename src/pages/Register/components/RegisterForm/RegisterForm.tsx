@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   InputForm,
   Button,
   InputPhoneForm,
   PasswordInputWithRequirements,
   SecurityQuestion,
+  Checkbox,
+  CustomLink,
+  ErrorMessage,
 } from "../../../../components";
 import { useFetch } from "../../../../hooks/useFetch.ts";
 import "./RegisterForm.css";
@@ -31,7 +34,7 @@ const questionOptions = [
 const RegisterForm = () => {
   const [formData, setFormData] = useState<IFormData>({
     fullName: "",
-    countryCode: "",
+    countryCode: "+1",
     phone: "",
     email: "",
     secretQuestion: "Cúal es el nombre de tu mascota?",
@@ -42,7 +45,15 @@ const RegisterForm = () => {
   const url = "http://localhost:8007/user/add";
 
   const { submit } = useFetch(url);
-
+  const [terms, setTerms] = useState(false);
+  const [errorTerms, setErrorTerms] = useState(false);
+  const onClick = () => {
+    if (!terms) {
+      setErrorTerms(true);
+    } else {
+      setErrorTerms(false);
+    }
+  };
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
@@ -78,6 +89,8 @@ const RegisterForm = () => {
       },
     });
   };
+
+  useEffect(() => {}, []);
 
   return (
     <form className="c-form-register" onSubmit={handleSubmit}>
@@ -126,8 +139,29 @@ const RegisterForm = () => {
         passwordValue={formData.password}
         onChange={handleChange}
       />
-
-      <Button variant="Primary">Crear Cuenta</Button>
+      <div className="c-form-register__terms">
+        <Checkbox
+          clickable={true}
+          content={
+            <>
+              {" "}
+              Acepto los <CustomLink to="#">Términos y Condiciones</CustomLink>,
+              la <CustomLink to="#">Política de Privacidad</CustomLink> y
+              autorizo el tratamiento de mis datos personales.
+            </>
+          }
+          name="terms"
+          isChecked={terms}
+          onChange={() => setTerms(!terms)}
+          required={true}
+        />
+        <ErrorMessage visibility={errorTerms && !terms}>
+          Debes aceptar los términos y condiciones
+        </ErrorMessage>
+      </div>
+      <Button onClick={onClick} variant="Primary">
+        Crear Cuenta
+      </Button>
     </form>
   );
 };
