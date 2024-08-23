@@ -29,7 +29,7 @@ const InputForm = (props: Props) => {
         className="c-input"
         {...rest}
       />
-      <ErrorMessage>{errorMessage}</ErrorMessage>
+      <ErrorMessage>{errorMessage ?? <>&nbsp;</>}</ErrorMessage>
     </div>
   );
 };
