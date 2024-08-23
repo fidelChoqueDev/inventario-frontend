@@ -1,37 +1,43 @@
 import "./RecoverPasswordPage.css";
-import { useState } from "react";
+import { useContext } from "react";
 import { Button, ButtonBackIcon, HeroLogo, InputForm } from "../../components";
+import { RecoveryPasswordContext } from "../../context/RecoveryPasswordContext";
+import { useNavigate } from "react-router-dom";
+
+const endpoint = "http://localhost:8007/user/security/question";
 
 const RecoverPasswordPage = () => {
-  const [email, setEmail] = useState("");
+  const { valuesBySteps, updateValuesBySteps } = useContext(
+    RecoveryPasswordContext,
+  );
+  const navigate = useNavigate();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const endpoint = "http:/localhost:8007/user/login/emailrecovery";
+    const paramsString = new URLSearchParams({
+      email: valuesBySteps.email,
+    });
+    const url = `${endpoint}?${paramsString.toString()}`;
+    console.log(url);
 
     try {
-      const response = await fetch(endpoint, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(email),
-      });
+      const response = await fetch(`${endpoint}?${paramsString.toString()}`);
 
       if (!response.ok) {
         throw new Error("Error al enviar el correo electrónico");
       }
-
       const data = await response.json();
-      console.log("Envio exitoso", data);
+      updateValuesBySteps("question", data.question);
+
+      navigate("/question");
     } catch (error) {
       console.error("Error", error);
     }
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(event.target.value);
+    updateValuesBySteps("email", event.target.value);
   };
 
   return (
@@ -47,7 +53,7 @@ const RecoverPasswordPage = () => {
 
       <form onSubmit={handleSubmit}>
         <InputForm
-          value={`${email}`}
+          value={valuesBySteps.email}
           placeholder="Correo electrónico"
           type="email"
           name="email"
