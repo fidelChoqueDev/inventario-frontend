@@ -7,8 +7,8 @@ export function helpMessageError(
   setErrorMessages: React.Dispatch<React.SetStateAction<IErrorMessages>>,
 ) {
   const errorMessages: IErrorMessages = {
-    passwordValue: "",
-    passwordConfirmation: "",
+    passwordValue: null,
+    passwordConfirmation: null,
   };
   if (passwordValue === "")
     errorMessages.passwordValue = "Este campo es requerido";
