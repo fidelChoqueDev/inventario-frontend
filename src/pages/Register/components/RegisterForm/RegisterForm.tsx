@@ -47,7 +47,7 @@ const RegisterForm = () => {
 
   const navigate = useNavigate();
   const url = "http://localhost:8007/user/add";
-  const [isOpen, openPopup] = usePopup(true, 3000, () => navigate("/login"));
+  const [isOpen, openPopup] = usePopup(true, 4000, () => navigate("/login"));
   const { submit, data } = useFetch(url);
   const [terms, setTerms] = useState(false);
   const [errorTerms, setErrorTerms] = useState(false);
