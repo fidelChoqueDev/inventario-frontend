@@ -8,12 +8,12 @@ import { default as Icon } from "./Icon/Icon";
 import { default as InputForm } from "./InputForm/InputForm";
 import { default as InputPasswordForm } from "./InputPasswordForm/InputPasswordForm";
 import { default as InputPhoneForm } from "./InputPhoneForm/InputPhoneForm";
+import NavBar from "./NavBar/NavBar";
 import { default as PasswordInputWithRequirements } from "./PasswordInputWithRequirements/PasswordInputWithRequirements";
 import { default as Popup } from "./Popup/Popup";
 import { default as ProtectedRoute } from "./ProtectedRoute/ProtectedRoute";
 import { default as Requirements } from "./Requirements/Requirements";
 import { default as SecurityQuestion } from "./SecurityQuestion/SecurityQuestion";
-import { default as NavBar } from "./NavBar";
 
 export {
   Icon,
