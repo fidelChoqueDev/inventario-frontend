@@ -13,6 +13,7 @@ import { default as Popup } from "./Popup/Popup";
 import { default as ProtectedRoute } from "./ProtectedRoute/ProtectedRoute";
 import { default as Requirements } from "./Requirements/Requirements";
 import { default as SecurityQuestion } from "./SecurityQuestion/SecurityQuestion";
+import { default as NavBar } from "./NavBar";
 
 export {
   Icon,
@@ -30,4 +31,5 @@ export {
   ProtectedRoute,
   Requirements,
   SecurityQuestion,
+  NavBar
 };

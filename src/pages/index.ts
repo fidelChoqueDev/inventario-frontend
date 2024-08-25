@@ -7,6 +7,7 @@ import { default as RecoverPasswordPage } from "./RecoverPassword/RecoverPasswor
 import { default as RegisterUserPage } from "./Register/RegisterUserPage";
 import { default as ErrorPage } from "./Error/ErrorPage";
 
+
 export {
   DashboardPage,
   HomePage,
