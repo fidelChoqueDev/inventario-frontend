@@ -24,6 +24,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<RegisterUserPage />} />
+        <Route path="/dashboard" element={<DashboardPage />} />
         <Route element={<RecoveryPasswordContextProvider />}>
           <Route path="/recover" element={<RecoverPasswordPage />} />
           <Route path="/question" element={<QuestionPage />} />
