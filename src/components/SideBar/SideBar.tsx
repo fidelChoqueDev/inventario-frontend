@@ -1,4 +1,4 @@
-import {Link} from 'react-router-dom'
+import {Link, NavLink} from 'react-router-dom'
 import style from "./SideBar.module.css"
 
 export default function SideBar() {
@@ -6,7 +6,7 @@ export default function SideBar() {
     <div className={style.sideBar}>
       <ul>
         <li>
-          <Link to="/">Inicio</Link>
+          <NavLink to="/">Inicio</NavLink>
         </li>
         <li>
           <Link to="/">Clientes</Link>
