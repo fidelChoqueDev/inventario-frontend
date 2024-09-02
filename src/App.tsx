@@ -14,6 +14,9 @@ import {
 import { ProtectedRoute } from "./components";
 import { AuthContext } from "./context/AuthContext";
 import { RecoveryPasswordContextProvider } from "./context/RecoveryPasswordContext";
+import Clientes from "./pages/Clientes/Clientes";
+import { Proveedor } from "./pages/Proveedor/Proveedor";
+import { ProductPage } from "./pages/Productos/ProductPage";
 
 function App() {
   const { token } = useContext(AuthContext);
@@ -25,7 +28,9 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<RegisterUserPage />} />
         <Route path="/dashboard" element={<DashboardPage />}>
-        
+          <Route path="/cliente" element={<Clientes/>}/>
+          <Route path="/proveedor" element={<Proveedor/>}/>
+          <Route path="/producto" element={<ProductPage/>}/>
         </Route>
         <Route element={<RecoveryPasswordContextProvider />}>
           <Route path="/recover" element={<RecoverPasswordPage />} />
