@@ -14,7 +14,7 @@ import {
 import { ProtectedRoute } from "./components";
 import { AuthContext } from "./context/AuthContext";
 import { RecoveryPasswordContextProvider } from "./context/RecoveryPasswordContext";
-import Clientes from "./pages/Clientes/Clientes";
+import { Clientes } from "./pages/Clientes/Clientes";
 import { Proveedor } from "./pages/Proveedor/Proveedor";
 import { ProductPage } from "./pages/Productos/ProductPage";
 
@@ -27,7 +27,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<RegisterUserPage />} />
-        <Route path="/dashboard" element={<DashboardPage />}>
+        <Route element={<DashboardPage />}>
           <Route path="/cliente" element={<Clientes/>}/>
           <Route path="/proveedor" element={<Proveedor/>}/>
           <Route path="/producto" element={<ProductPage/>}/>

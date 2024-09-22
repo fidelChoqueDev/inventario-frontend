@@ -1,4 +1,4 @@
-import ProductsAdd from '../components/ProductForm/ProductsAdd'
+import  ProductsAdd  from "../../components/ProductForm/ProductsAdd"
 
 export const ProductPage = () => {
   return (
